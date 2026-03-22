@@ -74,6 +74,92 @@ Detailed trail of what was searched, what was found, what worked, and what to tr
 
 **Total: 15 performances (3 per-mile, 12 checkpoint-level)**
 
+---
+
+## 2026-03-22 — Session 2: Championship Per-Lap Data & DUV Profiles
+
+### Major Data Sources Discovered
+
+**Lupatotissima Timing Data (lupatotissima.it)**
+- Excel files with per-lap timing for entire IAU championship fields
+- Verona 2022: ~200 laps per athlete on 1525.48m loop. Complete field timing.
+- Converted to hourly interpolated checkpoints (24 data points per athlete)
+
+**Taipei 2023 Timing Data**
+- Excel files with per-lap data for IAU WC Taipei 2023
+- 2km loop with intermediate timing at 0.8K and 1.8K
+- Complete field timing, ~150 laps per athlete
+
+**BreizhChrono (breizhchrono.com)**
+- French timing platform used for Albi championships
+- Results export available at `/resultats-courses/.../export` (Excel format)
+- Individual timing accessible but JavaScript-heavy live pages
+
+**DUV Athlete Profiles**
+- Rich intermediate splits on many athlete pages: 6h, 12h, 100km, 100mi, 50km, 50mi
+- URL: `statistik.d-u-v.org/getresultperson.php?runner=RUNNER_ID&dist=24h`
+- Coverage varies by race — IAU championships tend to have more splits
+
+### Data Created This Session
+
+**Verona 2022 IAU 24h EC (106 files)**
+- 50 men above 139mi threshold, 56 women above 117mi threshold
+- Per-lap timing → 24 hourly interpolated checkpoints each
+- Top: Sorokin 198.6mi, Piotrowski 187.6mi, Bereznowska 159.2mi
+- Source: Lupatotissima Excel files (`/tmp/verona_splits_men.xlsx`, `verona_splits_women.xlsx`)
+
+**Taipei 2023 IAU 24h WC (111 files)**
+- 54 men, 57 women above thresholds
+- Per-lap timing → 24 hourly interpolated checkpoints each
+- Top: Sorokin 187.5mi, Zisimopoulos 181.6mi, Nakata 168.0mi
+- Source: Taipei timing Excel files (`/tmp/taipei_laps1.xlsx`, `taipei_laps2.xlsx`)
+
+**DUV Athlete Profile Splits (46 files)**
+Athletes scraped: Sorokin (4 races), Tkachuk (3), Zisimopoulos (1), Norum (2),
+Hara (2), Herron (4), Dauwalter (2), Kudo (2), Webster (1), Ranson (2),
+Bereznowska (3), Falk (6), Pazda-Pozorska (2), Olsson (2), Csecsei (2),
+Britton (1), Weber (3), Leblond (2), Coury (1), Nagy (1)
+- Checkpoint level: 6h/12h/100km/100mi/50km/50mi where available
+
+**Albi 2025 IAU 24h WC (97 files)**
+- 48 men, 49 women above thresholds
+- Final distances only (no intermediate splits from DUV event page)
+- Top: Tkachuk 294.3km, Webster 278.6km WR, Ranson 274.2km, Nakata 272.0km
+- Source: DUV event/119984
+
+**Session Total: 360 new files, bringing total to 374 performances**
+
+### Key Findings
+
+- **Sorokin's WR pacing**: At Verona 2022, covered 15.2km in first hour (9.5mi), 172.3km by 12h (107mi), finishing at 319.6km. Remarkable consistency.
+- **Gender pacing differences visible**: At Verona, top women started slower but many showed less falloff in second half
+- **Multi-championship athletes**: Many runners appear at both Verona 2022 and Taipei 2023, enabling longitudinal comparison
+- **Albi 2025 field**: 363 finishers from 45 countries — largest 24h championship ever
+
+### Next Steps — Updated Priority Order
+
+**Immediate:**
+1. ✅ DUV intermediate splits for top 50 — DONE
+2. ✅ Albi 2025 championship data — DONE (final distances)
+3. ✅ Sorokin Verona 2022 WR — DONE (hourly from per-lap)
+4. ✅ Taipei 2023 championship — DONE (hourly from per-lap)
+5. Desert Solstice historical results — research agent dispatched
+6. European championship data — research agent dispatched
+7. Japanese/Asian race data — research agent dispatched
+8. Albi 2025 per-lap timing — BreizhChrono has it but needs Playwright for JS-heavy pages
+
+**Medium term:**
+9. Bob Hearn blog — extract lap-by-lap analysis (EMU, Desert Solstice)
+10. Across the Years archives
+11. Albi 2019 per-lap timing — BreizhChrono has this too
+12. DUV 48h/6d/12h top lists — expand beyond 24h
+13. Soochow/Taipei annual race results (2007-2024) — rich Japanese/Taiwanese data
+
+**Requires outreach:**
+14. Contact Aravaipa Running — Desert Solstice chip data
+15. Contact IAU — championship per-lap archives
+16. Contact Bob Hearn — custom timing extracts
+
 ### World Record Corrections Found
 - 72h women's WR: Viktoria Brown (CAN), NOT Bereznowska
 - Bereznowska holds 48h WR (436.371 km, 2025 UltraPark, Poland)
