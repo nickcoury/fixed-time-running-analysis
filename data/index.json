@@ -1,0 +1,50 @@
+{
+  "distances": [
+    { "id": "24h", "name": "24 Hour", "unit": "hours" },
+    { "id": "12h", "name": "12 Hour", "unit": "hours" },
+    { "id": "6h", "name": "6 Hour", "unit": "hours" },
+    { "id": "100mi", "name": "100 Mile (Track)", "unit": "miles" }
+  ],
+  "races": [
+    { "id": "desert-solstice", "name": "Desert Solstice", "location": "Phoenix, AZ", "track_m": 400 },
+    { "id": "6-days-in-the-dome", "name": "6 Days in the Dome", "location": "Milwaukee, WI" }
+  ],
+  "performances": [
+    {
+      "id": "desert-solstice-2021-nick-coury",
+      "runner": "Nick Coury",
+      "race_id": "desert-solstice",
+      "year": 2021,
+      "distance_id": "24h",
+      "distance_mi": 173.015,
+      "duration": "24:00:00",
+      "pace_sec": 499,
+      "note": "American Record",
+      "splits_file": "desert-solstice-2021-nick-coury.json"
+    },
+    {
+      "id": "desert-solstice-2020-nick-coury",
+      "runner": "Nick Coury",
+      "race_id": "desert-solstice",
+      "year": 2020,
+      "distance_id": "24h",
+      "distance_mi": 155.4,
+      "duration": "23:13:00",
+      "pace_sec": 538,
+      "note": "1st Place",
+      "splits_file": "desert-solstice-2020-nick-coury.json"
+    },
+    {
+      "id": "dome-2021-nick-coury",
+      "runner": "Nick Coury",
+      "race_id": "6-days-in-the-dome",
+      "year": 2021,
+      "distance_id": "100mi",
+      "distance_mi": 100,
+      "duration": "13:21:00",
+      "pace_sec": 801,
+      "note": "1st Place, 100mi PR",
+      "splits_file": "dome-2021-nick-coury.json"
+    }
+  ]
+}
