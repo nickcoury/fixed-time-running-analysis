@@ -983,6 +983,14 @@
       "distances": [
         "48h"
       ]
+    },
+    {
+      "id": "albi-12h",
+      "name": "IAU 24h WC Albi - 12h Split",
+      "location": "Albi, France",
+      "distances": [
+        "12h"
+      ]
     }
   ],
   "performances": [
@@ -8857,6 +8865,45 @@
       "duration_sec": 172800,
       "data_type": "checkpoints",
       "splits_file": "ultrapark-48h-2022-patrycja-bereznowska.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "Camille Herron",
+      "nationality": "USA",
+      "gender": "F",
+      "race_id": "albi-12h",
+      "year": 2019,
+      "distance_km": 146.221,
+      "distance_mi": 90.85,
+      "duration_sec": 43200,
+      "data_type": "checkpoints",
+      "splits_file": "albi-12h-2019-camille-herron.json",
+      "distance_id": "12h"
+    },
+    {
+      "runner": "Camille Herron",
+      "nationality": "USA",
+      "gender": "F",
+      "race_id": "desert-solstice-12h",
+      "year": 2021,
+      "distance_km": 144.021,
+      "distance_mi": 89.49,
+      "duration_sec": 43200,
+      "data_type": "checkpoints",
+      "splits_file": "desert-solstice-12h-2021-camille-herron.json",
+      "distance_id": "12h"
+    },
+    {
+      "runner": "Ivan Zaborskii",
+      "nationality": "RUS",
+      "gender": "M",
+      "race_id": "gomu-48h",
+      "year": 2025,
+      "distance_km": 423.045,
+      "distance_mi": 262.85,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "gomu-48h-2025-ivan-zaborskii.json",
       "distance_id": "48h"
     }
   ]
