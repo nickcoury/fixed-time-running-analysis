@@ -80,7 +80,10 @@
     {
       "id": "colac-6d",
       "name": "Cliff Young Australian 6 Day",
-      "location": "Colac, Australia"
+      "location": "Colac, Australia",
+      "distances": [
+        "6d"
+      ]
     },
     {
       "id": "nyrrc-6d",
@@ -643,6 +646,70 @@
       "location": "USA",
       "distances": [
         "6d"
+      ]
+    },
+    {
+      "id": "48h-france",
+      "name": "48 Heures de France",
+      "location": "France",
+      "distances": [
+        "48h"
+      ]
+    },
+    {
+      "id": "antibes-6d",
+      "name": "Les 6 jours d'Antibes",
+      "location": "Antibes, France",
+      "distances": [
+        "6d"
+      ]
+    },
+    {
+      "id": "balatonfured-48h",
+      "name": "Int. 48-hour Ultramarathon Balatonfüred",
+      "location": "Balatonfüred, Hungary",
+      "distances": [
+        "48h"
+      ]
+    },
+    {
+      "id": "cinisello-48h",
+      "name": "Cinisello Balsamo Running Festival 48h",
+      "location": "Cinisello Balsamo, Italy",
+      "distances": [
+        "48h"
+      ]
+    },
+    {
+      "id": "emu-48h",
+      "name": "EMU 24-48 Hour Int. Run Races",
+      "location": "Hungary",
+      "distances": [
+        "48h"
+      ]
+    },
+    {
+      "id": "gateshead-6d",
+      "name": "Six Day Track Race Gateshead",
+      "location": "Gateshead, UK",
+      "distances": [
+        "6d"
+      ]
+    },
+    {
+      "id": "la-rochelle-6d",
+      "name": "Les Six Jours de La Rochelle",
+      "location": "La Rochelle, France",
+      "distances": [
+        "6d"
+      ]
+    },
+    {
+      "id": "mantiqueira-48h",
+      "name": "Ultramaratona 48hs da Mantiqueira",
+      "location": "Brazil",
+      "distances": [
+        "48h"
       ]
     }
   ],
@@ -7309,6 +7376,292 @@
       "duration_sec": 172800,
       "data_type": "checkpoints",
       "splits_file": "taipei-48h-2026-hsiao-chun-huang.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "Tiziano Marchesi",
+      "nationality": "ITA",
+      "gender": "M",
+      "race_id": "48h-france",
+      "year": 2023,
+      "distance_km": 407.218,
+      "distance_mi": 253.02,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "48h-france-2023-tiziano-marchesi.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "Olivier Chaigne",
+      "nationality": "FRA",
+      "gender": "M",
+      "race_id": "antibes-6d",
+      "year": 2012,
+      "distance_km": 881.509,
+      "distance_mi": 547.73,
+      "duration_sec": 518400,
+      "data_type": "checkpoints",
+      "splits_file": "antibes-6d-2012-olivier-chaigne.json",
+      "distance_id": "6d"
+    },
+    {
+      "runner": "Tiziano Marchesi",
+      "nationality": "ITA",
+      "gender": "M",
+      "race_id": "athens-48h",
+      "year": 2014,
+      "distance_km": 407.885,
+      "distance_mi": 253.43,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "athens-48h-2014-tiziano-marchesi.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "Tiziano Marchesi",
+      "nationality": "ITA",
+      "gender": "M",
+      "race_id": "balatonfured-48h",
+      "year": 2011,
+      "distance_km": 413.63,
+      "distance_mi": 256.99,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "balatonfured-48h-2011-tiziano-marchesi.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "Olivier Chaigne",
+      "nationality": "FRA",
+      "gender": "M",
+      "race_id": "balatonfured-6d",
+      "year": 2014,
+      "distance_km": 920.771,
+      "distance_mi": 572.15,
+      "duration_sec": 518400,
+      "data_type": "checkpoints",
+      "splits_file": "balatonfured-6d-2014-olivier-chaigne.json",
+      "distance_id": "6d"
+    },
+    {
+      "runner": "Jaroslav Kocourek",
+      "nationality": "CZE",
+      "gender": "M",
+      "race_id": "brno-48h",
+      "year": 1998,
+      "distance_km": 423.262,
+      "distance_mi": 262.98,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "brno-48h-1998-jaroslav-kocourek.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "Jaroslav Kocourek",
+      "nationality": "CZE",
+      "gender": "M",
+      "race_id": "brno-48h",
+      "year": 2000,
+      "distance_km": 404.759,
+      "distance_mi": 251.49,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "brno-48h-2000-jaroslav-kocourek.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "Irina Reutovich",
+      "nationality": "RUS",
+      "gender": "F",
+      "race_id": "brno-48h",
+      "year": 2002,
+      "distance_km": 372.415,
+      "distance_mi": 231.44,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "brno-48h-2002-irina-reutovich.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "Tiziano Marchesi",
+      "nationality": "ITA",
+      "gender": "M",
+      "race_id": "cinisello-48h",
+      "year": 2025,
+      "distance_km": 406.089,
+      "distance_mi": 252.32,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "cinisello-48h-2025-tiziano-marchesi.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "Jaroslav Kocourek",
+      "nationality": "CZE",
+      "gender": "M",
+      "race_id": "colac-6d",
+      "year": 1999,
+      "distance_km": 925.6,
+      "distance_mi": 575.15,
+      "duration_sec": 518400,
+      "data_type": "checkpoints",
+      "splits_file": "colac-6d-1999-jaroslav-kocourek.json",
+      "distance_id": "6d"
+    },
+    {
+      "runner": "Julia Fatton",
+      "nationality": "GER",
+      "gender": "F",
+      "race_id": "emu-48h",
+      "year": 2017,
+      "distance_km": 378.082,
+      "distance_mi": 234.91,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "emu-48h-2017-julia-fatton.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "James Zarei",
+      "nationality": "GBR",
+      "gender": "M",
+      "race_id": "gateshead-6d",
+      "year": 1990,
+      "distance_km": 1001.515,
+      "distance_mi": 622.29,
+      "duration_sec": 518400,
+      "data_type": "checkpoints",
+      "splits_file": "gateshead-6d-1990-james-zarei.json",
+      "distance_id": "6d"
+    },
+    {
+      "runner": "Jean-Gilles Boussiquet",
+      "nationality": "FRA",
+      "gender": "M",
+      "race_id": "la-rochelle-6d",
+      "year": 1984,
+      "distance_km": 950.6,
+      "distance_mi": 590.68,
+      "duration_sec": 518400,
+      "data_type": "checkpoints",
+      "splits_file": "la-rochelle-6d-1984-jean-gilles-boussiquet.json",
+      "distance_id": "6d"
+    },
+    {
+      "runner": "Jean-Gilles Boussiquet",
+      "nationality": "FRA",
+      "gender": "M",
+      "race_id": "la-rochelle-6d",
+      "year": 1985,
+      "distance_km": 975.2,
+      "distance_mi": 605.96,
+      "duration_sec": 518400,
+      "data_type": "checkpoints",
+      "splits_file": "la-rochelle-6d-1985-jean-gilles-boussiquet.json",
+      "distance_id": "6d"
+    },
+    {
+      "runner": "Gilbert Mainix",
+      "nationality": "FRA",
+      "gender": "M",
+      "race_id": "la-rochelle-6d",
+      "year": 1986,
+      "distance_km": 980.8,
+      "distance_mi": 609.44,
+      "duration_sec": 518400,
+      "data_type": "checkpoints",
+      "splits_file": "la-rochelle-6d-1986-gilbert-mainix.json",
+      "distance_id": "6d"
+    },
+    {
+      "runner": "Gilbert Mainix",
+      "nationality": "FRA",
+      "gender": "M",
+      "race_id": "la-rochelle-6d",
+      "year": 1992,
+      "distance_km": 1007.6,
+      "distance_mi": 626.07,
+      "duration_sec": 518400,
+      "data_type": "checkpoints",
+      "splits_file": "la-rochelle-6d-1992-gilbert-mainix.json",
+      "distance_id": "6d"
+    },
+    {
+      "runner": "James Zarei",
+      "nationality": "GBR",
+      "gender": "M",
+      "race_id": "la-rochelle-6d",
+      "year": 1992,
+      "distance_km": 974.2,
+      "distance_mi": 605.34,
+      "duration_sec": 518400,
+      "data_type": "checkpoints",
+      "splits_file": "la-rochelle-6d-1992-james-zarei.json",
+      "distance_id": "6d"
+    },
+    {
+      "runner": "Jean-Gilles Boussiquet",
+      "nationality": "FRA",
+      "gender": "M",
+      "race_id": "la-rochelle-6d",
+      "year": 1992,
+      "distance_km": 1034.2,
+      "distance_mi": 642.62,
+      "duration_sec": 518400,
+      "data_type": "checkpoints",
+      "splits_file": "la-rochelle-6d-1992-jean-gilles-boussiquet.json",
+      "distance_id": "6d"
+    },
+    {
+      "runner": "Ana Luiza de Faria Matos",
+      "nationality": "BRA",
+      "gender": "F",
+      "race_id": "mantiqueira-48h",
+      "year": 2018,
+      "distance_km": 366,
+      "distance_mi": 227.36,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "mantiqueira-48h-2018-ana-luiza-matos.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "Edit Berces",
+      "nationality": "HUN",
+      "gender": "F",
+      "race_id": "surgeres-48h",
+      "year": 2003,
+      "distance_km": 369.749,
+      "distance_mi": 229.78,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "surgeres-48h-2003-edit-berces.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "Irina Reutovich",
+      "nationality": "RUS",
+      "gender": "F",
+      "race_id": "surgeres-48h",
+      "year": 2003,
+      "distance_km": 358.288,
+      "distance_mi": 222.58,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "surgeres-48h-2003-irina-reutovich.json",
+      "distance_id": "48h"
+    },
+    {
+      "runner": "Edit Berces",
+      "nationality": "HUN",
+      "gender": "F",
+      "race_id": "surgeres-48h",
+      "year": 2005,
+      "distance_km": 320.59,
+      "distance_mi": 199.18,
+      "duration_sec": 172800,
+      "data_type": "checkpoints",
+      "splits_file": "surgeres-48h-2005-edit-berces.json",
       "distance_id": "48h"
     }
   ]
