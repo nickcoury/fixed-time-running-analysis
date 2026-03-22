@@ -11,11 +11,43 @@
 <header>
 <div class="container">
 <h1><a href="index.html">Fixed-Time Running Analysis</a></h1>
+<nav class="mode-tabs">
+<button class="mode-tab active" data-mode="projection">Pacing Projection</button>
+<button class="mode-tab" data-mode="compare">Side-by-Side Compare</button>
+</nav>
 </div>
 </header>
 <main class="container">
+
+<!-- Projection Mode -->
+<div id="projectionMode">
 <div class="hero">
-<h2>Compare Fixed-Time Race Performances</h2>
+<h2>Pacing Projection</h2>
+<p>See how runners track against even-split pace for a target performance. Above the line = ahead of schedule.</p>
+</div>
+
+<div class="filters">
+<div class="filter-group">
+<label class="filter-label">Baseline Performance</label>
+<select id="baselineSelect"></select>
+</div>
+</div>
+
+<div class="perf-list" id="projPerfList">
+<div class="loading">Loading performances...</div>
+</div>
+
+<div class="charts-section" id="projChartsSection" style="display:none"></div>
+</div>
+
+<div class="compare-bar" id="projCompareBar">
+<button class="compare-btn" id="projCompareBtn" disabled>Show Projection</button>
+</div>
+
+<!-- Compare Mode -->
+<div id="compareMode" style="display:none">
+<div class="hero">
+<h2>Side-by-Side Compare</h2>
 <p>Select performances to overlay mile-by-mile splits, pacing strategies, and time gaps.</p>
 </div>
 
@@ -30,11 +62,13 @@
 </div>
 
 <div class="charts-section" id="chartsSection" style="display:none"></div>
-</main>
+</div>
 
-<div class="compare-bar" id="compareBar">
+<div class="compare-bar" id="compareBar" style="display:none">
 <button class="compare-btn" id="compareBtn" disabled>Compare</button>
 </div>
+
+</main>
 
 <footer><div class="container">Built by <a href="https://github.com/nickcoury">Nick Coury</a> &amp; Claw</div></footer>
 <script src="js/app.js"></script>
