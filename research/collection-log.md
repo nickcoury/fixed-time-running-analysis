@@ -252,11 +252,14 @@ New athletes: Sorokin (Lupatotissima 2022 WR 11:12:13 + Centurion 2021 with 50km
 - **33 multi-distance athletes** now span 2-3 distance categories, enabling cross-distance pacing analysis.
 - **Otaki's Surgères longevity:** 4 Surgères + 6 Taipei 48h races from 2005-2025, with his best (426km) at Surgères 2007 showing 126km at 12h → 234km at 24h → 191km in second 24h.
 
-### Session 4 Totals
-- **585 performances** across **116 races** and **5 distances**
-- 24h: 459, 48h: 55, 6d: 33, 12h: 22, 100mi: 16
-- **399 unique runners**, **33 multi-distance athletes**
-- **4 commits** pushed
+### Session 4 Totals (Final)
+- **627 performances** across **128 races** and **5 distances**
+- 24h: 459, 48h: 74, 6d: 42, 12h: 27, 100mi: 25
+- **409 unique runners**, **44 nationalities**, year range 1975-2026
+- **33 multi-distance athletes**, 9 spanning 3+ distances
+- Camille Herron spans all 5 distances (unique in dataset)
+- **227 performances** with 7-24 checkpoints (rich hourly data)
+- **11 commits** pushed
 
 ### Next Steps — Updated Priority Order
 
