@@ -1,13 +1,23 @@
 {
   "distances": [
     { "id": "24h", "name": "24 Hour", "unit": "hours" },
+    { "id": "48h", "name": "48 Hour", "unit": "hours" },
+    { "id": "6d", "name": "6 Day", "unit": "days" },
     { "id": "12h", "name": "12 Hour", "unit": "hours" },
     { "id": "6h", "name": "6 Hour", "unit": "hours" },
     { "id": "100mi", "name": "100 Mile (Track)", "unit": "miles" }
   ],
   "races": [
     { "id": "desert-solstice", "name": "Desert Solstice", "location": "Phoenix, AZ", "track_m": 400 },
-    { "id": "6-days-in-the-dome", "name": "6 Days in the Dome", "location": "Milwaukee, WI" }
+    { "id": "6-days-in-the-dome", "name": "6 Days in the Dome", "location": "Milwaukee, WI" },
+    { "id": "sri-chinmoy-24h", "name": "Sri Chinmoy 24 Hour", "location": "Various" },
+    { "id": "sri-chinmoy-adelaide", "name": "Sri Chinmoy 24 Hour", "location": "Adelaide, Australia" },
+    { "id": "iau-24h-wc", "name": "IAU 24h World Championships", "location": "Various" },
+    { "id": "centurion-track-100", "name": "Centurion Track 100", "location": "Bedford, UK", "track_m": 400 },
+    { "id": "brrc-100mi", "name": "BRRC 100 Mile Championship", "location": "Tipton, England" },
+    { "id": "surgeres-48h", "name": "Surgères 48 Hour", "location": "Surgères, France" },
+    { "id": "colac-6d", "name": "Cliff Young Australian 6 Day", "location": "Colac, Australia" },
+    { "id": "nyrrc-6d", "name": "NYRRC 6 Day Race", "location": "Randalls Island, NY" }
   ],
   "performances": [
     {
@@ -45,6 +55,148 @@
       "pace_sec": 801,
       "note": "1st Place, 100mi PR",
       "splits_file": "dome-2021-nick-coury.json"
+    },
+    {
+      "id": "adelaide-1997-yiannis-kouros",
+      "runner": "Yiannis Kouros",
+      "race_id": "sri-chinmoy-adelaide",
+      "year": 1997,
+      "distance_id": "24h",
+      "distance_mi": 188.5,
+      "duration": "24:00:00",
+      "pace_sec": 458,
+      "note": "24h World Record (303.5 km)",
+      "splits_file": "adelaide-1997-yiannis-kouros.json"
+    },
+    {
+      "id": "sri-chinmoy-1984-yiannis-kouros",
+      "runner": "Yiannis Kouros",
+      "race_id": "sri-chinmoy-24h",
+      "year": 1984,
+      "distance_id": "24h",
+      "distance_mi": 177,
+      "duration": "24:00:00",
+      "pace_sec": 488,
+      "note": "Three WRs (100mi, 200K, 24h)",
+      "splits_file": "sri-chinmoy-1984-yiannis-kouros.json"
+    },
+    {
+      "id": "sri-chinmoy-1985-yiannis-kouros",
+      "runner": "Yiannis Kouros",
+      "race_id": "sri-chinmoy-24h",
+      "year": 1985,
+      "distance_id": "24h",
+      "distance_mi": 178,
+      "duration": "24:00:00",
+      "pace_sec": 485,
+      "note": "Improved own WR",
+      "splits_file": "sri-chinmoy-1985-yiannis-kouros.json"
+    },
+    {
+      "id": "verona-2001-yiannis-kouros",
+      "runner": "Yiannis Kouros",
+      "race_id": "iau-24h-wc",
+      "year": 2001,
+      "distance_id": "24h",
+      "distance_mi": 171.35,
+      "duration": "24:00:00",
+      "pace_sec": 504,
+      "splits_file": "verona-2001-yiannis-kouros.json"
+    },
+    {
+      "id": "surgeres-1996-yiannis-kouros",
+      "runner": "Yiannis Kouros",
+      "race_id": "surgeres-48h",
+      "year": 1996,
+      "distance_id": "48h",
+      "distance_mi": 294.21,
+      "duration": "48:00:00",
+      "pace_sec": 587,
+      "note": "48h World Record",
+      "splits_file": "surgeres-1996-yiannis-kouros.json"
+    },
+    {
+      "id": "colac-2005-yiannis-kouros",
+      "runner": "Yiannis Kouros",
+      "race_id": "colac-6d",
+      "year": 2005,
+      "distance_id": "6d",
+      "distance_mi": 644.05,
+      "duration": "144:00:00",
+      "pace_sec": 804,
+      "note": "6-Day World Record (age 49)",
+      "splits_file": "colac-2005-yiannis-kouros.json"
+    },
+    {
+      "id": "nyrrc-1984-yiannis-kouros",
+      "runner": "Yiannis Kouros",
+      "race_id": "nyrrc-6d",
+      "year": 1984,
+      "distance_id": "6d",
+      "distance_mi": 635,
+      "duration": "144:00:00",
+      "pace_sec": 816,
+      "note": "6-Day WR at the time",
+      "splits_file": "nyrrc-1984-yiannis-kouros.json"
+    },
+    {
+      "id": "bedford-2021-aleksandr-sorokin",
+      "runner": "Aleksandr Sorokin",
+      "race_id": "centurion-track-100",
+      "year": 2021,
+      "distance_id": "100mi",
+      "distance_mi": 100,
+      "duration": "11:14:56",
+      "pace_sec": 405,
+      "note": "100-Mile World Record",
+      "splits_file": "bedford-2021-aleksandr-sorokin.json"
+    },
+    {
+      "id": "bedford-2021-samantha-amend",
+      "runner": "Samantha Amend",
+      "race_id": "centurion-track-100",
+      "year": 2021,
+      "distance_id": "100mi",
+      "distance_mi": 100,
+      "duration": "14:34:03",
+      "pace_sec": 524,
+      "note": "British Female Record",
+      "splits_file": "bedford-2021-samantha-amend.json"
+    },
+    {
+      "id": "bedford-2023-dan-lawson",
+      "runner": "Dan Lawson",
+      "race_id": "centurion-track-100",
+      "year": 2023,
+      "distance_id": "100mi",
+      "distance_mi": 100,
+      "duration": "12:37:10",
+      "pace_sec": 454,
+      "splits_file": "bedford-2023-dan-lawson.json"
+    },
+    {
+      "id": "tipton-1975-cavin-woodward",
+      "runner": "Cavin Woodward",
+      "race_id": "brrc-100mi",
+      "year": 1975,
+      "distance_id": "100mi",
+      "distance_mi": 100,
+      "duration": "11:38:54",
+      "pace_sec": 419,
+      "note": "100mi WR (stood 1975-2021)",
+      "splits_file": "tipton-1975-cavin-woodward.json"
+    },
+    {
+      "id": "albi-2019-camille-herron",
+      "runner": "Camille Herron",
+      "race_id": "iau-24h-wc",
+      "year": 2019,
+      "distance_id": "24h",
+      "distance_mi": 167.84,
+      "duration": "24:00:00",
+      "pace_sec": 515,
+      "note": "Women's 24h WR (at the time)",
+      "splits_file": "albi-2019-camille-herron.json"
     }
   ]
 }
