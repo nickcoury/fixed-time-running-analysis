@@ -222,28 +222,59 @@ Britton (1), Weber (3), Leblond (2), Coury (1), Nagy (1)
 - **6-day pacing:** Bonne covered 238/411/570/1045 (24h/48h/72h/6d), showing ~40% of total distance in first 24h, ~55% by 48h, ~55% by 72h. Significant tail-end volume.
 - **Multi-distance athletes:** Many runners appear across 24h, 48h, and 6d. Bereznowska (#5 24h, #1 48h), Rex (#37 24h, #4 48h, #2 6d), Herron (#4 24h, #2 48h, #3 6d).
 
-### Session Totals
+### Session 3 Totals
 - **489 performances** across **71 races** and **5 distances** (24h, 48h, 6d, 12h, 100mi)
 - **7 commits** pushed to repo
 - Complete coverage of all-time top 50 men and women in 24h
 
+---
+
+## 2026-03-21 — Session 4: Multi-Distance Expansion
+
+### Approach
+Systematic sweep of all-time top-20 lists for all 5 distance categories (48h, 6d, 12h, 100mi) from DUV. Individual athlete profile fetches for split data.
+
+### 48h Batch (43→55 performances)
+New athletes added: Otaki (5 Taipei + 3 Surgères races, richest 48h data), Boussiquet (3 Surgères), Mangan (Brno + Surgères), Rusek (Surgères 1995 + Brno), Piotrowski (GOMU 2025), Kocourek (Brno 1998/2000), Marchesi (4 races, Athens has 12h/24h splits), Fatton (EMU 2017), Berces (Surgères 2003/2005), Reutovich (Brno 2002 + Surgères 2003), Matos (Mantiqueira 2018), Huang (5 Taipei races with 6h/12h/24h/50km/50mi/100km/100mi splits — richest 48h data in dataset), Falbo (48h Dome 2014).
+
+### 6d Batch (8→33 performances)
+New athletes: Boussiquet (La Rochelle 1984/85/92 — historic 1000km+ era), Mainix (La Rochelle 1986/92), Zarei (Gateshead 1990), Chaigne (Antibes 2012 + Balatonfüred 2014), Kocourek (Colac 1999), Schwerk (Erkrath 2007 WR-era + 3 EMU/Balatonfüred with 24h/48h splits), Byambaa (Hirosaki 2025 + Dome 2021 + Sri Chinmoy 2022), Fejes (EMU 2015 + Dome 2014/2019 with 24h/48h/72h splits), Maraz (GOMU 2024 + EMU 2022 with 24h/48h/72h), Masanova (GOMU 2025 with 24h/48h/72h), Huang (Hirosaki 2025), Bjerre (Åbybro 2025).
+
+### 12h Batch (1→22 performances)
+New athletes: Sorokin (Spartanion 2022 WR 177.41km), Bitter (Dome 2019 + Equalizer 2025), Piotrowski (SLO24 2023 + Bad Blumau 2021), Lipiäinen (Kokkola 2023 WR-era + 2 Joensuu with 6h/100km splits), Stelmach (Spartanion 2023), Nakata (Taipei 2022/2023), Pont Chafer (Barcelona 2023 with 6h split), Rüeger (SLO12 2023), Olsen (Ottawa 2013), Perez Serrano (Louny 2023 with 6h/50km/100km + SLO12 2024), Honkala (Sparta 2023), Zhalybin (St Petersburg 2006), Ailenei (Barcelona 2022 with 6h/100km/100mi splits), Tarnutzer (Barcelona 2022 with 6h/100km), Berg (Gothenburg 2025 with 50mi/6h/100km).
+
+### 100mi Batch (5→16 performances)
+New athletes: Sorokin (Lupatotissima 2022 WR 11:12:13 + Centurion 2021 with 50km/50mi/100km splits), Bitter (Dome 2024 with 50km/100km + DS 2015), Olsson (Tunnel Hill 2023), Kharitonov (Crystal Palace 2002 with 50km/100km splits), Paulson (Jackpot 2026 WR 12:19:34 + 2024), Jennings (Tunnel Hill 2025), Trason (Sri Chinmoy 1991), Slaby (DS 2016).
+
+### Key Insights
+- **Huang is the Taipei 48h queen:** 8 Taipei races (2017-2026) with the richest intermediate split data of any 48h athlete. 7 checkpoints per race including 50km/50mi/100km/100mi time-to-distance plus 6h/12h/24h distance splits.
+- **La Rochelle 1992 was a golden year:** Boussiquet (1034km), Mainix (1007km), and Zarei (974km) all ran 6-day at La Rochelle in 1992. Three 900km+ performances in the same race.
+- **33 multi-distance athletes** now span 2-3 distance categories, enabling cross-distance pacing analysis.
+- **Otaki's Surgères longevity:** 4 Surgères + 6 Taipei 48h races from 2005-2025, with his best (426km) at Surgères 2007 showing 126km at 12h → 234km at 24h → 191km in second 24h.
+
+### Session 4 Totals
+- **585 performances** across **116 races** and **5 distances**
+- 24h: 459, 48h: 55, 6d: 33, 12h: 22, 100mi: 16
+- **399 unique runners**, **33 multi-distance athletes**
+- **4 commits** pushed
+
 ### Next Steps — Updated Priority Order
 
 **Immediate:**
-1. ✅ All top-50 men/women 24h — DONE (72 new files)
-2. ✅ 48h top performers — DONE (16 files)
-3. ✅ 6-day top performers — DONE (8 files)
-4. RaceResult per-lap data — Desert Solstice 2019-2022 via Playwright
-5. JUA Jingu Gaien hourly PDFs — per-runner per-hour lap counts
-6. Soochow full-field DUV results — 19 editions, 964 finishers
-7. More 48h/6d profiles — top 20 lists from background agent
+1. ✅ All top-50 men/women 24h — DONE
+2. ✅ 48h top-20 — DONE
+3. ✅ 6d top-20 — DONE
+4. ✅ 12h top-20 — DONE
+5. ✅ 100mi top-20 — DONE
+6. RaceResult per-lap data — Desert Solstice 2019-2022 via Playwright
+7. JUA Jingu Gaien hourly PDFs — per-runner per-hour lap counts
 
 **Medium term:**
-8. BreizhChrono per-lap — Albi 2019 + 2025 via Playwright
-9. Bob Hearn blog pace charts — embedded PNG analysis
-10. Across the Years archives — RaceResult per-lap via Playwright
-11. DUV 12h top lists — expand 12h data
-12. Katowice 2012 IAU WC — Morton's 277km American record
+8. Soochow full-field DUV results — 19 editions, 964 finishers
+9. BreizhChrono per-lap — Albi 2019 + 2025 via Playwright
+10. Bob Hearn blog pace charts — embedded PNG analysis
+11. Across the Years archives — RaceResult per-lap via Playwright
+12. More 48h/6d/12h profiles beyond top-20
 
 **Requires outreach:**
 13. Contact Aravaipa Running — Desert Solstice/ATY/Jackpot chip data
