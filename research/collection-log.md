@@ -167,29 +167,90 @@ Britton (1), Weber (3), Leblond (2), Coury (1), Nagy (1)
 - GOMU (not IAU) governs multi-day championships
 - Sarah Webster (GBR) broke women's 24h WR at Albi 2025 with 278.622 km
 
-### Next Steps — Priority Order
+---
 
-**Immediate (next session):**
-1. DUV intermediate splits — scrape athlete profiles for top 50 men/women 24h performers
-2. More Centurion finisher data — extract remaining finishers from 2021-2023
-3. Albi 2025 championship data — new WRs just set, check for published splits
-4. Sorokin Verona 2022 (319.6km WR) — check if any more splits surfaced
+## 2026-03-22 — Session 3: Top-50 Completion, Multi-Distance Expansion
+
+### Methodology
+
+**Systematic DUV top-50 sweep:** Fetched all-time top-50 men and women 24h lists from DUV. Identified 43 athletes missing from the dataset. Scraped each athlete's DUV profile page for all 24h results with intermediate splits. Created split files for every qualifying performance.
+
+**Multi-distance expansion:** Extended dataset to 48h, 6-day, and 12h distances. Fetched DUV profiles for top performers in each distance. Created separate distance categories in the index.
+
+**Background research agents:** Dispatched three parallel agents:
+1. **DUV 48h/6d/12h top-20 lists** — complete rankings with runner IDs
+2. **Desert Solstice/ATY/Jackpot** — RaceResult has per-lap data (needs Playwright), Bob Hearn blog has pace charts
+3. **Japanese/Asian 24h data** — Jingu Gaien has JUA hourly PDFs, Soochow has 19 editions on DUV
+
+### Data Created This Session
+
+**DUV Profile Scraping — 24h Top-50 Completion (72 files)**
+- Men: Zaborskii, Zhalybin, Field, Morton, Sekiya (6 Soochow races), Filipov, Bonne, Nunes, Inoue (3 races), Clavery, Napiorkowski (2), Schwerk (2 historical), Kruglikov (3), Safin, Polozhentsev, Bystrov (2), Ailenei (2), Otaki (2)
+- Women: Berces (2), Lizak (5 Desert Solstice with rich splits), Slaby (4), Little, Smith, Churanova (2), Ovsiannikova, Tarnutzer (2), Honkala (2), Dimitriadu, Lomsky (2 historical), Fontaine (3), Caliskaner, Fredriksson, Sakane, Gogoleva, Sidorenkova
+
+**48h Performances (16 total)**
+- Bonne 485km 48h WR (Pabianice 2025)
+- Bereznowska 436km 48h women's WR, plus 2024 Taipei with 7 checkpoints (richest 48h data)
+- Herron 435km Canberra with 100mi/200km/24h splits
+- Fudali 3 races (Pabianice, BUFF, Taipei with 50km/100km/100mi/24h)
+- Holvik 451km Taipei with 12h/100mi/24h splits
+- Zakrzewski 411km Taipei with 12h/100mi/24h
+- Rex 3 races (BUFF, UltraPark, Athens with 12h/24h)
+- Tonstad UltraPark with 24h split
+- Tkachuk 435km Vinnitsa with 6h/12h splits
+
+**6-Day Performances (8 total)**
+- Zaborskii 1047km 6-day WR with 24h/48h/72h splits
+- Bonne 1045km #2 all-time with 100km/100mi/24h/48h/72h splits (richest 6d data)
+- Eckert 970km women's WR with 24h/48h/72h splits
+- Rex 930km, Herron 901km, Lawson 920km with 24h/48h splits
+- Kouros 1036km and 635mi already from Session 1
+
+**12h Performance (1)**
+- Bitter 168.8km 12h WR with 50km/50mi/100km/100mi splits
+
+**Additional 24h Performances**
+- Soochow/Taipei: Hara 285km (2014), Ishikawa 279km (2019), Herron 263km, Odani 264km, Shevchenko 242km (all 2024), Gore 270km (2024)
+- Desert Solstice 2020 field: Montgomery, Camastro, Hearn, Lewis
+- Bitter: 3 Desert Solstice/Dome races with splits
+
+### Key Findings
+
+- **Sekiya dominance at Soochow:** Ryoichi Sekiya ran Soochow/Taipei 24h 12 times (2001-2018), with 6 performances above 260km. His 2011 race has the richest splits: 50km/50mi/100km/12h/100mi.
+- **Lizak's Desert Solstice consistency:** Marisa Lizak ran Desert Solstice 5 times (2019-2024) with rich 50km/100km/12h/100mi splits every year. Her pace patterns show remarkable year-over-year consistency.
+- **48h pacing patterns:** Top 48h athletes cover ~55-60% of total distance in first 24h. Bereznowska: 230/427=54%, Bonne: 265/465=57%, Fudali: 252/433=58%.
+- **6-day pacing:** Bonne covered 238/411/570/1045 (24h/48h/72h/6d), showing ~40% of total distance in first 24h, ~55% by 48h, ~55% by 72h. Significant tail-end volume.
+- **Multi-distance athletes:** Many runners appear across 24h, 48h, and 6d. Bereznowska (#5 24h, #1 48h), Rex (#37 24h, #4 48h, #2 6d), Herron (#4 24h, #2 48h, #3 6d).
+
+### Session Totals
+- **489 performances** across **71 races** and **5 distances** (24h, 48h, 6d, 12h, 100mi)
+- **7 commits** pushed to repo
+- Complete coverage of all-time top 50 men and women in 24h
+
+### Next Steps — Updated Priority Order
+
+**Immediate:**
+1. ✅ All top-50 men/women 24h — DONE (72 new files)
+2. ✅ 48h top performers — DONE (16 files)
+3. ✅ 6-day top performers — DONE (8 files)
+4. RaceResult per-lap data — Desert Solstice 2019-2022 via Playwright
+5. JUA Jingu Gaien hourly PDFs — per-runner per-hour lap counts
+6. Soochow full-field DUV results — 19 editions, 964 finishers
+7. More 48h/6d profiles — top 20 lists from background agent
 
 **Medium term:**
-5. Bob Hearn blog — extract his lap-by-lap analysis data (EMU, Desert Solstice)
-6. Across the Years archives — check for published split data
-7. Jackpot Ultra results — Aravaipa chip timing data
-8. Taipei championship results (2023) — bao-ming.com timing portal
-9. DUV 48h/6d/12h top lists — expand beyond 24h
+8. BreizhChrono per-lap — Albi 2019 + 2025 via Playwright
+9. Bob Hearn blog pace charts — embedded PNG analysis
+10. Across the Years archives — RaceResult per-lap via Playwright
+11. DUV 12h top lists — expand 12h data
+12. Katowice 2012 IAU WC — Morton's 277km American record
 
 **Requires outreach:**
-10. Contact Aravaipa Running — request Desert Solstice historical chip data
-11. Contact IAU — request championship lap-by-lap data
-12. Contact Camille Herron — she's shared her splits with journalists before
-13. Contact Bob Hearn — he has custom-extracted lap data from timing systems
+13. Contact Aravaipa Running — Desert Solstice/ATY/Jackpot chip data
+14. Contact IAU — championship per-lap archives
+15. Contact Bob Hearn — custom timing extracts
 
-**Long-term data archaeology:**
-14. Kouros hourly splits — check coaching materials, books ("Running Over the Sahara")
-15. Academic papers on ultra pacing — some include raw data in appendices
-16. National federation all-time lists (USATF, UKA, Athletics Australia)
-17. Kaggle ultra dataset (7.4M records) — useful for population analysis, not splits
+**Long-term:**
+16. Kouros hourly splits from books/coaching materials
+17. Academic papers with raw pacing data
+18. National federation all-time lists
