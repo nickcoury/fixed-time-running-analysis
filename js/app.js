@@ -132,6 +132,7 @@ function buildQuickPicks() {
     { label: 'Top 5 Men', fn: function() { return getTopN(5, 'M'); } },
     { label: 'World Records', fn: function() { return getNotedPerfs('World Record'); } },
     { label: 'Championship Races', fn: function() { return getChampionshipPerfs(); } },
+    { label: 'Negative Splits', fn: function() { return getNegativeSplitPerfs(); } },
   ];
 
   picks.forEach(function(pick) {
@@ -168,6 +169,14 @@ function getNotedPerfs(noteSubstr) {
   }).map(function(p) { return p.id; });
 }
 
+function getNegativeSplitPerfs() {
+  var perfs = getFilteredByDistance();
+  return perfs.filter(function(p) { return p.negative_split; })
+    .sort(function(a, b) { return b.distance_mi - a.distance_mi; })
+    .slice(0, 10)
+    .map(function(p) { return p.id; });
+}
+
 function getChampionshipPerfs() {
   var perfs = getFilteredByDistance();
   return perfs.filter(function(p) {
@@ -185,6 +194,7 @@ function applyFilters() {
   var country = document.getElementById('filterCountry').value;
   var gender = document.getElementById('filterGender').value;
   var search = document.getElementById('searchInput').value.toLowerCase().trim();
+  var negSplitOnly = document.getElementById('filterNegSplit').checked;
 
   // Cascade: update race/country dropdowns based on distance filter
   updateCascadingFilters(dist);
@@ -204,6 +214,7 @@ function applyFilters() {
   if (race) filteredPerfs = filteredPerfs.filter(function(p) { return p.race_id === race; });
   if (country) filteredPerfs = filteredPerfs.filter(function(p) { return p.nationality === country; });
   if (gender) filteredPerfs = filteredPerfs.filter(function(p) { return p.gender === gender; });
+  if (negSplitOnly) filteredPerfs = filteredPerfs.filter(function(p) { return p.negative_split; });
   if (search) {
     filteredPerfs = filteredPerfs.filter(function(p) {
       return p.runner.toLowerCase().indexOf(search) >= 0 ||
@@ -721,6 +732,7 @@ function wireEvents() {
     document.getElementById(id).addEventListener('change', applyFilters);
   });
   document.getElementById('searchInput').addEventListener('input', applyFilters);
+  document.getElementById('filterNegSplit').addEventListener('change', applyFilters);
 
   // Clear all
   document.getElementById('clearAll').addEventListener('click', function() {
