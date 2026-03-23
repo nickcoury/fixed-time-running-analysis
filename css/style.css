@@ -374,7 +374,8 @@ footer a { color: var(--text-secondary); }
 
   /* Filters stack and fill width */
   .filter-bar { flex-direction: column; gap: 6px; }
-  .filter-bar input, .filter-bar select { width: 100%; min-width: 0; max-width: 100%; font-size: 16px; padding: 10px 12px; }
+  .filter-bar input:not([type="checkbox"]), .filter-bar select { width: 100%; min-width: 0; max-width: 100%; font-size: 16px; padding: 10px 12px; }
+  .filter-checkbox { padding: 8px 0; font-size: 14px; }
 
   /* Quick picks: horizontal scroll instead of wrap */
   .quick-picks { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; gap: 6px; }
