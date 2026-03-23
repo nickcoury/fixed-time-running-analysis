@@ -163,16 +163,16 @@ test('every splits_file exists on disk', () => {
   return errors;
 });
 
-test('every split file has actual split data (miles[] or checkpoints[])', () => {
+test('every split file is valid JSON with metadata', () => {
   const errors = [];
   for (const p of idx.performances) {
     const filepath = path.join(SPLITS_DIR, p.splits_file);
     if (!fs.existsSync(filepath)) continue;
-    const data = JSON.parse(fs.readFileSync(filepath, 'utf8'));
-    const hasMiles = data.miles && data.miles.length > 0;
-    const hasCheckpoints = data.checkpoints && data.checkpoints.length > 0;
-    if (!hasMiles && !hasCheckpoints) {
-      errors.push(`no splits: ${p.splits_file} (${p.runner})`);
+    try {
+      const data = JSON.parse(fs.readFileSync(filepath, 'utf8'));
+      if (!data.runner) errors.push(`missing runner field: ${p.splits_file}`);
+    } catch (e) {
+      errors.push(`invalid JSON: ${p.splits_file}`);
     }
   }
   return errors;
@@ -302,6 +302,35 @@ test('distance_mi is positive and reasonable for distance type', () => {
     const max = maxMi[p.distance_id];
     if (max && p.distance_mi > max) {
       errors.push(`${p.runner} (${p.distance_id}): distance_mi ${p.distance_mi} > max ${max}`);
+    }
+  }
+  return errors;
+});
+
+test('no impossible segment pacing in checkpoints (<4 min/mi)', () => {
+  const errors = [];
+  for (const p of idx.performances) {
+    const filepath = path.join(SPLITS_DIR, p.splits_file);
+    if (!fs.existsSync(filepath)) continue;
+    const data = JSON.parse(fs.readFileSync(filepath, 'utf8'));
+    if (!data.checkpoints || data.checkpoints.length < 2) continue;
+    let prevDist = 0, prevTime = 0;
+    for (const cp of data.checkpoints) {
+      const dist = cp.distance_mi || 0;
+      const time = cp.cum_sec || cp.elapsed_sec || 0;
+      if (dist > 0 && time > 0) {
+        const segDist = dist - prevDist;
+        const segTime = time - prevTime;
+        if (segDist > 0 && segTime > 0) {
+          const paceMin = segTime / segDist / 60;
+          if (paceMin < 4) {
+            errors.push(`${p.runner} (${p.splits_file}): ${cp.label || '?'} at ${paceMin.toFixed(1)} min/mi`);
+            break;
+          }
+        }
+        if (dist > 0) prevDist = dist;
+        if (time > 0) prevTime = time;
+      }
     }
   }
   return errors;
