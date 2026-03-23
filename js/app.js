@@ -110,7 +110,7 @@ async function loadSplits(perfId) {
   return data;
 }
 
-function getTimeDistancePairs(splits) {
+function getTimeDistancePairs(splits, perf) {
   var pairs = [{ time_sec: 0, distance_mi: 0 }];
   if (splits.miles && splits.miles.length > 0) {
     splits.miles.forEach(function(m) {
@@ -124,7 +124,21 @@ function getTimeDistancePairs(splits) {
     });
     pairs.sort(function(a, b) { return a.time_sec - b.time_sec; });
   }
+  // Add final point from performance metadata if checkpoints end early
+  if (perf) {
+    var last = pairs[pairs.length - 1];
+    var totalSec = parseDuration(perf.duration);
+    if (totalSec && perf.distance_mi && last.distance_mi < perf.distance_mi * 0.95) {
+      pairs.push({ time_sec: totalSec, distance_mi: perf.distance_mi, label: 'finish' });
+    }
+  }
   return pairs;
+}
+
+function parseDuration(dur) {
+  if (!dur) return 0;
+  var parts = dur.split(':').map(Number);
+  return parts.length === 3 ? parts[0] * 3600 + parts[1] * 60 + parts[2] : 0;
 }
 
 function hasMileData(splits) {
@@ -582,12 +596,12 @@ function renderProjection(container, entries, toggleHTML, controls) {
   var baselineId = document.getElementById('baselineSelect').value;
   var baselineEntry = entries.find(function(e) { return e.perf.id === baselineId; }) || entries[0];
 
-  var baselinePairs = getTimeDistancePairs(baselineEntry.splits);
+  var baselinePairs = getTimeDistancePairs(baselineEntry.splits, baselineEntry.perf);
   var lastPair = baselinePairs[baselinePairs.length - 1];
   var evenPace = lastPair.time_sec / lastPair.distance_mi;
 
   var datasets = entries.map(function(e, i) {
-    var pairs = getTimeDistancePairs(e.splits);
+    var pairs = getTimeDistancePairs(e.splits, e.perf);
     var isCheckpoint = !hasMileData(e.splits);
     return {
       label: e.perf.runner + ' ' + e.perf.year + ' (' + e.perf.distance_mi + ' mi)',
@@ -603,7 +617,7 @@ function renderProjection(container, entries, toggleHTML, controls) {
 
   // Even pace reference line
   var maxTime = Math.max.apply(null, entries.map(function(e) {
-    var p = getTimeDistancePairs(e.splits);
+    var p = getTimeDistancePairs(e.splits, e.perf);
     return p[p.length - 1].time_sec;
   }));
   datasets.unshift({
