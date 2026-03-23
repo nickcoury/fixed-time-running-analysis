@@ -362,10 +362,59 @@ footer {
 
 footer a { color: var(--text-secondary); }
 
+/* === Mobile Responsive === */
 @media (max-width: 640px) {
-  .filter-bar { flex-direction: column; }
-  .filter-bar input, .filter-bar select { min-width: 100%; }
-  .perf-item { flex-wrap: wrap; }
-  .perf-stats { flex-wrap: wrap; gap: 8px; }
-  .viz-tabs { overflow-x: auto; flex-wrap: nowrap; }
+  .container { padding: 0 12px; }
+  main { padding: 16px 0 40px; }
+
+  /* Filters stack and fill width */
+  .filter-bar { flex-direction: column; gap: 6px; }
+  .filter-bar input, .filter-bar select { min-width: 100%; font-size: 16px; padding: 10px 12px; }
+
+  /* Quick picks: horizontal scroll instead of wrap */
+  .quick-picks { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; gap: 6px; }
+  .quick-pick-btn { padding: 6px 12px; font-size: 12px; }
+
+  /* Performance items: stack vertically */
+  .perf-item { flex-wrap: wrap; padding: 10px 12px; gap: 8px; }
+  .perf-item input[type="checkbox"] { display: none; }
+  .perf-meta { flex-basis: calc(100% - 60px); min-width: 0; }
+  .perf-runner { font-size: 13px; }
+  .perf-detail { font-size: 11px; }
+  .perf-stats { width: 100%; justify-content: flex-start; gap: 10px; font-size: 12px; }
+  .perf-add { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); min-width: 36px; min-height: 36px; display: flex; align-items: center; justify-content: center; font-size: 16px; border-radius: 6px; }
+  .perf-item { position: relative; padding-right: 54px; }
+
+  /* Cart items: bigger tap targets */
+  .cart-remove { font-size: 24px; padding: 4px 8px; min-width: 36px; min-height: 36px; display: flex; align-items: center; justify-content: center; }
+
+  /* Viz tabs: horizontal scroll */
+  .viz-tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 6px; padding-bottom: 4px; }
+  .viz-tab { white-space: nowrap; padding: 8px 12px; font-size: 13px; flex-shrink: 0; }
+
+  /* Baseline select full width */
+  .viz-controls select { width: 100%; font-size: 16px; }
+
+  /* Chart: tighter padding */
+  .chart-card { padding: 12px; }
+  .chart-card h3 { font-size: 16px; }
+  .chart-card .desc { font-size: 12px; }
+
+  /* Toggle labels: wrap better */
+  .year-toggles { gap: 6px; }
+  .year-toggles label { font-size: 12px; }
+
+  /* Perf list: slightly taller for touch scrolling */
+  .perf-list { max-height: 400px; }
+
+  /* Selection pill */
+  .selection-pill { width: 100%; }
+  .pill-half { flex: 1; text-align: center; padding: 10px 12px; }
+}
+
+/* Tablet tweaks */
+@media (min-width: 641px) and (max-width: 900px) {
+  .filter-bar { flex-wrap: wrap; }
+  .filter-bar input { flex: 1 1 100%; }
+  .filter-bar select { flex: 1 1 45%; }
 }
