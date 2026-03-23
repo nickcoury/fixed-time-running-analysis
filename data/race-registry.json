@@ -1,0 +1,404 @@
+{
+  "_schema_version": 1,
+  "_description": "Registry of known fixed-time running races and their data sources.",
+  "races": {
+    "ultra-marathon-24-12-6h-greece": {
+      "name": "Ultra Marathon 24, 12 & 6h",
+      "location": "Greece",
+      "distances": ["24h", "12h", "6h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_id": 326303,
+          "server": "my4.raceresult.com",
+          "has_laps": true,
+          "lap_format": "row-per-lap",
+          "scrape_status": "done",
+          "files_written": 40,
+          "notes": "7 runners 24h, 8 runners 12h, 25 runners 6h. Greek names."
+        }
+      ]
+    },
+    "bashore-bash": {
+      "name": "Bashore Bash 6hr & 12hr",
+      "location": "Jonestown, PA, USA",
+      "distances": ["12h", "6h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_ids": [247735, 204651, 170597],
+          "server": "my4.raceresult.com",
+          "has_laps": true,
+          "lap_format": "row-per-lap",
+          "scrape_status": "done",
+          "files_written": 76,
+          "notes": "2023: 32 files, 2022: 13 files, 2021: 31 files. Long loops (~5mi)."
+        }
+      ]
+    },
+    "iron-will-36h": {
+      "name": "Iron Will 36 Hour",
+      "location": "USA",
+      "distances": ["36h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_id": 260732,
+          "server": "my1.raceresult.com",
+          "has_laps": true,
+          "lap_format": "row-per-lap",
+          "scrape_status": "done",
+          "files_written": 10,
+          "notes": "11 runners, 1 had < 3 laps."
+        }
+      ]
+    },
+    "12hours-trackrun-greece": {
+      "name": "12hours TrackRun",
+      "location": "Greece",
+      "distances": ["12h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_id": 237157,
+          "server": "my2.raceresult.com",
+          "has_laps": true,
+          "lap_format": "row-per-lap",
+          "scrape_status": "done",
+          "files_written": 18,
+          "notes": "10 runners in 12h1, 8 in 12h2. Greek names. High lap counts (~300)."
+        }
+      ]
+    },
+    "world-time-trial-championships": {
+      "name": "6-12-24 Hour World Time Trial Championships",
+      "location": "Virtual/Multi-venue",
+      "distances": ["6h", "12h", "24h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_ids": [335400, 335399, 282273, 240154, 240125],
+          "has_laps": false,
+          "has_lap_summary": true,
+          "scrape_status": "no-detail-data",
+          "notes": "Lap Information list has summary stats (Max/Avg/Min), not individual laps."
+        }
+      ]
+    },
+    "national-championships-iks-ukraine": {
+      "name": "National Championships 12H/100km/50km (IKS Ukraine)",
+      "location": "Ukraine",
+      "distances": ["12h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_ids": [338549, 288121],
+          "server": "my2.raceresult.com",
+          "has_laps": true,
+          "lap_format": "row-per-lap-nested",
+          "scrape_status": "done",
+          "files_written": 127,
+          "notes": "79 runners (2025) + 48 runners (2024). Nested format (grouped by contest), handled by flattening."
+        }
+      ]
+    },
+    "snowdrop-55h": {
+      "name": "Snowdrop 55-Hour Ultra",
+      "location": "Spring, TX, USA",
+      "distances": ["55h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_ids": [321270, 272977],
+          "has_laps": false,
+          "has_lap_summary": true,
+          "scrape_status": "no-detail-data",
+          "notes": "Lap Result List is columnar summary only. Already have checkpoint data from DUV."
+        }
+      ]
+    },
+    "sri-chinmoy-100k-australia": {
+      "name": "Sri Chinmoy 100K & AUTRA National 100K Championships",
+      "location": "Canberra, Australia",
+      "distances": ["100k", "50k"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_ids": [383070, 327616, 278089],
+          "has_laps": true,
+          "lap_format": "row-per-lap",
+          "scrape_status": "done",
+          "files_written": 100,
+          "notes": "5km loops. 2026: 58 (100K) + 40 (50K). 2024/2023: 1+1 entries only. Uses [Split{n}]/[Lap{n}] field format."
+        }
+      ]
+    },
+    "sri-chinmoy-mara-fun-relays": {
+      "name": "Sri Chinmoy Mara-Fun Relays",
+      "location": "Canberra, Australia",
+      "distances": ["marathon"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_ids": [367396, 313522, 265388],
+          "has_laps": true,
+          "lap_format": "row-per-lap",
+          "scrape_status": "done",
+          "files_written": 62,
+          "notes": "Marathon relay and solo. 2025: 17, 2024: 25, 2023: 20. Uses [Split{n}]/[Lap{n}] field format."
+        }
+      ]
+    },
+    "rodopi-backyard-ultra": {
+      "name": "RODOPI Backyard Ultra",
+      "location": "Greece",
+      "distances": ["backyard"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_id": 339844,
+          "has_laps": true,
+          "lap_format": "row-per-lap",
+          "scrape_status": "done",
+          "files_written": 64,
+          "notes": "Uses [Measurement{n}]/[Hour{n}] format. Hour{n} = running time only (not elapsed). 64 runners."
+        }
+      ]
+    },
+    "kefalonia-backyard-ultra": {
+      "name": "Kefalonia Backyard Ultra",
+      "location": "Kefalonia, Greece",
+      "distances": ["backyard"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_ids": [334138, 283685],
+          "has_laps": true,
+          "lap_format": "row-per-lap",
+          "scrape_status": "done",
+          "files_written": 169,
+          "notes": "Uses [Measurement{n}]/[Hour{n}] format. 2025: 99, 2024: 70."
+        }
+      ]
+    },
+    "schinder-trail-backyard-ultra": {
+      "name": "Schinder-Trail Backyard Ultra",
+      "location": "Germany",
+      "distances": ["backyard"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_id": 263862,
+          "has_laps": true,
+          "lap_format": "row-per-lap",
+          "scrape_status": "done",
+          "files_written": 85,
+          "notes": "Also has columnar hourly views (Rundenzeiten 1./2. Tag). 85 runners from Lap Details list."
+        }
+      ]
+    },
+    "nz-backyard-series": {
+      "name": "New Zealand Backyard Ultra Series",
+      "location": "New Zealand",
+      "distances": ["backyard"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_ids": [
+            370307, 316282, 268548,
+            353937,
+            348823, 297022,
+            343374, 292509,
+            339244,
+            335253,
+            331651, 281399, 238098,
+            326484, 281396, 276877, 232327,
+            323240, 378109,
+            312584,
+            383865, 382671, 357260
+          ],
+          "has_laps": true,
+          "lap_format": "backyard-nz",
+          "scrape_status": "done",
+          "files_written": 1577,
+          "notes": "Uses [Hour{n}]/[RestTime{n}] format (no cumulative). Includes Arrowtown, Hanmer, Krayzie, KINGS, Best Dam, Riverhead, Pigs, M*A*S*H, World Championship NZ venue, and more. 2023-2026 seasons."
+        }
+      ]
+    },
+    "bike-sebring": {
+      "name": "Bike Sebring 6hr-12hr-24hr",
+      "location": "Sebring, FL, USA",
+      "distances": ["6h", "12h", "24h"],
+      "sport": "cycling",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_ids": [383314, 277188],
+          "has_laps": true,
+          "lap_format": "row-per-lap",
+          "scrape_status": "done",
+          "files_written": 179,
+          "notes": "Cycling event. Multiple categories (drafting/non-drafting, team). 2026: 78, 2024: 101."
+        }
+      ]
+    },
+    "lmbc-6h-cross-country": {
+      "name": "LMBC 6 Hour Cross Country",
+      "location": "USA",
+      "distances": ["6h"],
+      "sport": "cycling",
+      "sources": [
+        {
+          "platform": "raceresult",
+          "event_id": 271196,
+          "has_laps": true,
+          "lap_format": "row-per-lap",
+          "scrape_status": "done",
+          "files_written": 29,
+          "notes": "Cycling event. Some entries exceed 6h duration (likely teams). Uses [Split{n}]/[Lap{n}] format."
+        }
+      ]
+    },
+    "across-the-years": {
+      "name": "Across the Years",
+      "location": "Phoenix, AZ, USA",
+      "distances": ["6d", "72h", "48h", "24h", "12h", "6h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "aravaipa",
+          "event_ids": [465, 376, 295],
+          "has_laps": false,
+          "scrape_status": "done",
+          "files_written": 832,
+          "notes": "Overall results only (total laps × loop distance). Per-lap crossings only available during live events. 2022 edition had 0 active participants. ATY 2022 also present via event 232."
+        }
+      ]
+    },
+    "fat-ox": {
+      "name": "Fat Ox",
+      "location": "Prescott, AZ, USA",
+      "distances": ["48h", "24h", "12h", "6h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "aravaipa",
+          "event_ids": [460, 366, 290, 216],
+          "has_laps": false,
+          "scrape_status": "done",
+          "files_written": 444,
+          "notes": "2022-2025 editions. Overall results only."
+        }
+      ]
+    },
+    "beyond-limits": {
+      "name": "Beyond Limits Ultras",
+      "location": "Kerrville, TX, USA",
+      "distances": ["72h", "48h", "24h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "aravaipa",
+          "event_ids": [396, 310, 240],
+          "has_laps": false,
+          "scrape_status": "done",
+          "files_written": 234,
+          "notes": "2023-2025 editions. Overall results only."
+        }
+      ]
+    },
+    "jackpot-ultras": {
+      "name": "Jackpot Ultras",
+      "location": "Las Vegas, NV, USA",
+      "distances": ["48h", "24h", "12h", "6h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "aravaipa",
+          "event_ids": [474, 382, 302],
+          "has_laps": false,
+          "scrape_status": "done",
+          "files_written": 565,
+          "notes": "2024-2026 editions. Jackpot 2023 had 0 active participants."
+        }
+      ]
+    },
+    "desert-solstice": {
+      "name": "Desert Solstice",
+      "location": "Phoenix, AZ, USA",
+      "distances": ["24h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "aravaipa",
+          "event_ids": [464, 374, 296, 162],
+          "has_laps": false,
+          "scrape_status": "done",
+          "files_written": 68,
+          "notes": "2021-2025 editions. Track 24h race. Also has ultrasignup checkpoint data."
+        }
+      ]
+    },
+    "white-lake-ultras": {
+      "name": "White Lake Ultras",
+      "location": "White Lake, NC, USA",
+      "distances": ["24h", "12h", "6h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "aravaipa",
+          "event_ids": [397, 318],
+          "has_laps": false,
+          "scrape_status": "done",
+          "files_written": 331,
+          "notes": "2024-2025 editions. Overall results only."
+        }
+      ]
+    },
+    "hotfoot-hamster": {
+      "name": "Hotfoot Hamster",
+      "location": "Phoenix, AZ, USA",
+      "distances": ["24h", "12h", "6h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "aravaipa",
+          "event_ids": [405, 326, 257, 207, 141],
+          "has_laps": false,
+          "scrape_status": "done",
+          "files_written": 608,
+          "notes": "2021-2025 editions. Overall results only."
+        }
+      ]
+    },
+    "jackrabbit-jubilee": {
+      "name": "Jackrabbit Jubilee",
+      "location": "Phoenix, AZ, USA",
+      "distances": ["12h", "6h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "aravaipa",
+          "event_ids": [434, 347, 272, 190, 144],
+          "has_laps": false,
+          "scrape_status": "done",
+          "files_written": 573,
+          "notes": "2021-2025 editions. Overall results only."
+        }
+      ]
+    }
+  }
+}

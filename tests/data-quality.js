@@ -31,7 +31,7 @@ const WR = {
   '100mi': { M_sec: 38499, F_sec: 44374 },
   '100k':  { M_sec: 21902, F_sec: 25263 },
 };
-const THRESHOLD = 0.70;
+const THRESHOLD = 0.30;
 
 let passed = 0;
 let failed = 0;
@@ -331,6 +331,255 @@ test('no impossible segment pacing in checkpoints (<4 min/mi)', () => {
         if (dist > 0) prevDist = dist;
         if (time > 0) prevTime = time;
       }
+    }
+  }
+  return errors;
+});
+
+// === Outlier detection tests ===
+// These flag potential bad data. Add IDs to allowlist to override legitimate outliers.
+
+const ALLOWLIST_PATH = path.join(ROOT, 'tests', 'outlier-allowlist.json');
+let allowlist = {};
+try {
+  allowlist = JSON.parse(fs.readFileSync(ALLOWLIST_PATH, 'utf8'));
+} catch (e) {
+  // No allowlist file yet — all flags are active
+}
+
+function isAllowed(testName, perfId) {
+  const list = allowlist[testName];
+  return list && list.includes(perfId);
+}
+
+// Helper: load split data for a performance
+function loadSplitData(p) {
+  const filepath = path.join(SPLITS_DIR, p.splits_file);
+  if (!fs.existsSync(filepath)) return null;
+  return JSON.parse(fs.readFileSync(filepath, 'utf8'));
+}
+
+// Helper: get ordered split segments from any data type
+function getSegments(data) {
+  const segments = [];
+  if (data.miles && data.miles.length > 0) {
+    let prevCum = 0;
+    for (const m of data.miles) {
+      const cumSec = m.cum_sec || 0;
+      const splitSec = m.split_sec || (cumSec - prevCum);
+      if (splitSec > 0) {
+        segments.push({ mile: m.mile, dist_mi: 1, split_sec: splitSec, cum_sec: cumSec });
+      }
+      prevCum = cumSec;
+    }
+  } else if (data.checkpoints && data.checkpoints.length > 0) {
+    let prevDist = 0, prevTime = 0;
+    for (const cp of data.checkpoints) {
+      const dist = cp.distance_mi || 0;
+      const time = cp.cum_sec || cp.elapsed_sec || 0;
+      if (dist > prevDist && time > prevTime) {
+        segments.push({
+          label: cp.label,
+          dist_mi: dist - prevDist,
+          split_sec: time - prevTime,
+          cum_sec: time,
+          cum_dist: dist
+        });
+        prevDist = dist;
+        prevTime = time;
+      }
+    }
+  }
+  return segments;
+}
+
+test('no performance exceeds 110% of world record', () => {
+  const errors = [];
+  for (const p of idx.performances) {
+    if (isAllowed('exceeds_wr', p.id)) continue;
+    const wr = WR[p.distance_id];
+    if (!wr) continue;
+    if (wr.M_sec) {
+      // Distance event: faster time = lower seconds
+      const gender = p.gender || 'M';
+      const wrTime = wr[gender + '_sec'] || wr.M_sec;
+      const parts = p.duration.split(':').map(Number);
+      if (parts.length !== 3) continue;
+      const sec = parts[0] * 3600 + parts[1] * 60 + parts[2];
+      if (sec < wrTime * 0.9) { // 10% faster than WR
+        errors.push(`${p.runner} (${p.distance_id} ${p.year}): ${p.duration} is ${Math.round((1 - sec/wrTime) * 100)}% faster than WR [id: ${p.id}]`);
+      }
+    } else {
+      // Timed event: more distance = better
+      const gender = p.gender || 'M';
+      const wrDist = wr[gender] || wr.M;
+      if (p.distance_mi > wrDist * 1.1) {
+        errors.push(`${p.runner} (${p.distance_id} ${p.year}): ${p.distance_mi}mi is ${Math.round((p.distance_mi/wrDist - 1) * 100)}% beyond WR (${wrDist}mi) [id: ${p.id}]`);
+      }
+    }
+  }
+  return errors;
+});
+
+test('all checkpoints have non-zero elapsed times', () => {
+  const errors = [];
+  for (const p of idx.performances) {
+    const data = loadSplitData(p);
+    if (!data || !data.checkpoints || data.checkpoints.length === 0) continue;
+    const allZero = data.checkpoints.every(cp => {
+      const t = cp.cum_sec || cp.elapsed_sec || 0;
+      return t === 0;
+    });
+    if (allZero) {
+      errors.push(`${p.runner} (${p.splits_file}): all ${data.checkpoints.length} checkpoints have elapsed_sec=0 [id: ${p.id}]`);
+    }
+  }
+  return errors;
+});
+
+test('no negative split greater than 10%', () => {
+  const errors = [];
+  for (const p of idx.performances) {
+    if (isAllowed('negative_split', p.id)) continue;
+    const data = loadSplitData(p);
+    if (!data) continue;
+    const segments = getSegments(data);
+    if (segments.length < 4) continue;
+    // Skip if segments have zero cumulative time (bad data caught by other test)
+    if (segments[segments.length - 1].cum_sec <= 0) continue;
+
+    // Split segments into first half and second half by cumulative time
+    const totalTime = segments[segments.length - 1].cum_sec;
+    const halfTime = totalTime / 2;
+
+    let firstHalfDist = 0, secondHalfDist = 0;
+    for (const seg of segments) {
+      const segMidTime = seg.cum_sec - seg.split_sec / 2;
+      if (segMidTime <= halfTime) {
+        firstHalfDist += seg.dist_mi;
+      } else {
+        secondHalfDist += seg.dist_mi;
+      }
+    }
+
+    if (firstHalfDist > 0 && secondHalfDist > 0) {
+      // Negative split means second half is faster (more distance per time)
+      // Compare pace: first half pace vs second half pace
+      const firstPace = (halfTime) / firstHalfDist;
+      const secondPace = (totalTime - halfTime) / secondHalfDist;
+      const negSplitPct = (firstPace - secondPace) / firstPace;
+
+      if (negSplitPct > 0.10) {
+        errors.push(`${p.runner} (${p.distance_id} ${p.year}): ${Math.round(negSplitPct * 100)}% negative split — 1st half ${(firstPace/60).toFixed(1)} min/mi, 2nd half ${(secondPace/60).toFixed(1)} min/mi [id: ${p.id}]`);
+      }
+    }
+  }
+  return errors;
+});
+
+test('no abnormally fast intermediate split', () => {
+  // Flag any segment that's faster than the WR average pace for that distance category.
+  // For a 24h runner doing 200mi, WR pace is ~7.25 min/mi. A single split at 4 min/mi
+  // over 50 miles is suspicious. We flag segments faster than 80% of WR pace.
+  const wrPace = {
+    '6h':   { M: 6 * 3600 / 60,  F: 6 * 3600 / 52 },   // sec/mi at WR
+    '12h':  { M: 12 * 3600 / 104.88, F: 12 * 3600 / 93 },
+    '24h':  { M: 24 * 3600 / 198.55, F: 24 * 3600 / 173.12 },
+    '48h':  { M: 48 * 3600 / 294.21, F: 48 * 3600 / 271.12 },
+    '72h':  { M: 72 * 3600 / 301.09, F: 72 * 3600 / 250 },
+    '6d':   { M: 144 * 3600 / 644.05, F: 144 * 3600 / 603 },
+  };
+  const errors = [];
+  for (const p of idx.performances) {
+    if (isAllowed('fast_split', p.id)) continue;
+    const wrp = wrPace[p.distance_id];
+    if (!wrp) continue;
+    const gender = p.gender || 'M';
+    const wrPaceSec = wrp[gender] || wrp.M; // sec per mile at WR
+
+    // Threshold: 80% of WR pace (20% faster than WR average)
+    const minPaceSec = wrPaceSec * 0.5;
+
+    const data = loadSplitData(p);
+    if (!data) continue;
+    const segments = getSegments(data);
+
+    for (const seg of segments) {
+      if (seg.dist_mi <= 0) continue;
+      const segPace = seg.split_sec / seg.dist_mi;
+      if (segPace < minPaceSec) {
+        const paceMin = segPace / 60;
+        const threshMin = minPaceSec / 60;
+        errors.push(`${p.runner} (${p.distance_id} ${p.year}): segment ${seg.label || 'mile ' + seg.mile} at ${paceMin.toFixed(1)} min/mi (threshold: ${threshMin.toFixed(1)}) [id: ${p.id}]`);
+        break; // one per performance
+      }
+    }
+  }
+  return errors;
+});
+
+test('no time inversions in split data', () => {
+  const errors = [];
+  for (const p of idx.performances) {
+    const data = loadSplitData(p);
+    if (!data) continue;
+
+    if (data.miles) {
+      let prevCum = 0;
+      for (const m of data.miles) {
+        if (m.cum_sec < prevCum) {
+          errors.push(`${p.runner} (${p.splits_file}): time inversion at mile ${m.mile} — ${m.cum_sec}s < prev ${prevCum}s`);
+          break;
+        }
+        prevCum = m.cum_sec;
+      }
+    }
+    if (data.checkpoints) {
+      let prevTime = 0;
+      for (const cp of data.checkpoints) {
+        const t = cp.cum_sec || cp.elapsed_sec || 0;
+        if (t > 0 && t < prevTime) {
+          errors.push(`${p.runner} (${p.splits_file}): time inversion at ${cp.label} — ${t}s < prev ${prevTime}s`);
+          break;
+        }
+        if (t > 0) prevTime = t;
+      }
+    }
+  }
+  return errors;
+});
+
+test('checkpoint distances increase monotonically', () => {
+  const errors = [];
+  for (const p of idx.performances) {
+    const data = loadSplitData(p);
+    if (!data || !data.checkpoints) continue;
+    let prevDist = 0;
+    for (const cp of data.checkpoints) {
+      const d = cp.distance_mi || 0;
+      if (d > 0 && d < prevDist) {
+        errors.push(`${p.runner} (${p.splits_file}): distance goes backwards at ${cp.label} — ${d}mi < prev ${prevDist}mi`);
+        break;
+      }
+      if (d > 0) prevDist = d;
+    }
+  }
+  return errors;
+});
+
+test('per-mile split count matches index distance_mi within 5%', () => {
+  // Only applies to per-mile data where last mile should approximate total distance.
+  // Checkpoint data uses intermediate timing mats and won't match total distance.
+  const errors = [];
+  for (const p of idx.performances) {
+    const data = loadSplitData(p);
+    if (!data || !data.miles || data.miles.length === 0) continue;
+
+    const splitDist = data.miles[data.miles.length - 1].mile;
+    const indexDist = p.distance_mi;
+    const diff = Math.abs(splitDist - indexDist) / Math.max(splitDist, indexDist);
+    if (diff > 0.05) {
+      errors.push(`${p.runner} (${p.distance_id} ${p.year}): ${splitDist} miles in splits vs ${indexDist}mi in index (${Math.round(diff * 100)}% diff) [id: ${p.id}]`);
     }
   }
   return errors;

@@ -109,6 +109,18 @@ async function loadSplits(perfId) {
   if (!perf) return null;
   var res = await fetch(DATA_BASE + '/splits/' + perf.splits_file);
   var data = await res.json();
+  // Normalize lap data into miles-compatible format for charts
+  if (data.laps && data.laps.length > 0 && !data.miles) {
+    data.miles = data.laps.map(function(lap) {
+      return {
+        mile: lap.lap,
+        split_sec: lap.split_sec,
+        moving_sec: lap.split_sec,
+        cum_sec: lap.cum_sec,
+      };
+    });
+    data._laps_as_miles = true; // Flag so we know labels should say "Lap" not "Mile"
+  }
   loadedSplits[perfId] = data;
   return data;
 }
@@ -118,6 +130,18 @@ function getTimeDistancePairs(splits, perf) {
   if (splits.miles && splits.miles.length > 0) {
     splits.miles.forEach(function(m) {
       pairs.push({ time_sec: m.cum_sec, distance_mi: m.mile });
+    });
+  } else if (splits.laps && splits.laps.length > 0) {
+    // Raw per-lap data: compute distance from loop distance
+    var loopMi = 0;
+    if (perf && perf.distance_mi && splits.total_laps) {
+      loopMi = perf.distance_mi / splits.total_laps;
+    } else if (splits.loop_distance_mi) {
+      loopMi = splits.loop_distance_mi;
+    }
+    splits.laps.forEach(function(lap) {
+      var dist = loopMi > 0 ? lap.lap * loopMi : 0;
+      pairs.push({ time_sec: lap.cum_sec, distance_mi: dist, label: 'Lap ' + lap.lap });
     });
   } else if (splits.checkpoints && splits.checkpoints.length > 0) {
     splits.checkpoints.forEach(function(cp) {
@@ -160,7 +184,8 @@ function sortPerfs(perfs) {
 }
 
 function hasMileData(splits) {
-  return splits.miles && splits.miles.length > 0;
+  return (splits.miles && splits.miles.length > 0) ||
+         (splits.laps && splits.laps.length > 0);
 }
 
 // === Initialization ===
@@ -860,8 +885,11 @@ function renderRawData(container, entries, controls) {
     '<div class="desc">Source: ' + (s.source || '—') + ' | Type: ' + (s.data_type || '—') + '</div>';
 
   if (s.miles && s.miles.length > 0) {
+    var isLaps = s._laps_as_miles;
+    var unitLabel = isLaps ? 'Lap' : 'Mile';
     html += '<div class="table-wrapper"><table><thead><tr>' +
-      '<th>Mile</th><th>Split</th><th>Moving</th><th>Cumulative</th><th>Pace</th>' +
+      '<th>' + unitLabel + '</th><th>Split</th><th>Moving</th><th>Cumulative</th>' +
+      (isLaps ? '' : '<th>Pace</th>') +
       '</tr></thead><tbody>';
     s.miles.forEach(function(m) {
       html += '<tr>' +
@@ -869,7 +897,7 @@ function renderRawData(container, entries, controls) {
         '<td>' + fmtPace(m.split_sec) + '</td>' +
         '<td>' + fmtPace(m.moving_sec) + '</td>' +
         '<td>' + fmtTime(m.cum_sec) + '</td>' +
-        '<td>' + fmtPace(m.moving_sec) + '/mi</td>' +
+        (isLaps ? '' : '<td>' + fmtPace(m.moving_sec) + '/mi</td>') +
         '</tr>';
     });
     html += '</tbody></table></div>';

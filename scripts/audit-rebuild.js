@@ -167,9 +167,15 @@ for (const filename of files) {
   // Must have actual splits
   const hasMiles = data.miles && data.miles.length > 0;
   const hasCheckpoints = data.checkpoints && data.checkpoints.length > 0;
-  if (!hasMiles && !hasCheckpoints) {
+  const hasLaps = data.laps && data.laps.length > 0;
+  if (!hasMiles && !hasCheckpoints && !hasLaps) {
     stats.noSplits++;
     continue;
+  }
+
+  // For lap-only data, infer duration_sec from total_time_sec
+  if (hasLaps && !data.duration_sec && data.total_time_sec) {
+    data.duration_sec = data.total_time_sec;
   }
 
   // Must have duration
