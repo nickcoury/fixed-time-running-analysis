@@ -186,6 +186,18 @@ function applyFilters() {
   var gender = document.getElementById('filterGender').value;
   var search = document.getElementById('searchInput').value.toLowerCase().trim();
 
+  // Cascade: update race/country dropdowns based on distance filter
+  updateCascadingFilters(dist);
+
+  // If selected race is no longer valid for this distance, reset it
+  if (race && dist) {
+    var raceValid = indexData.performances.some(function(p) { return p.race_id === race && p.distance_id === dist; });
+    if (!raceValid) {
+      document.getElementById('filterRace').value = '';
+      race = '';
+    }
+  }
+
   filteredPerfs = indexData.performances.slice();
 
   if (dist) filteredPerfs = filteredPerfs.filter(function(p) { return p.distance_id === dist; });
@@ -205,6 +217,31 @@ function applyFilters() {
   filteredPerfs.sort(function(a, b) { return b.distance_mi - a.distance_mi || b.year - a.year; });
 
   renderBrowseList();
+}
+
+function updateCascadingFilters(dist) {
+  var raceFilter = document.getElementById('filterRace');
+  var countryFilter = document.getElementById('filterCountry');
+  var currentRace = raceFilter.value;
+  var currentCountry = countryFilter.value;
+
+  var perfs = indexData.performances;
+  if (dist) perfs = perfs.filter(function(p) { return p.distance_id === dist; });
+
+  // Update races
+  var raceIds = [];
+  perfs.forEach(function(p) { if (raceIds.indexOf(p.race_id) === -1) raceIds.push(p.race_id); });
+  var races = indexData.races.filter(function(r) { return raceIds.indexOf(r.id) >= 0; });
+  races.sort(function(a, b) { return a.name.localeCompare(b.name); });
+  raceFilter.innerHTML = '<option value="">All races</option>' +
+    races.map(function(r) { return '<option value="' + r.id + '"' + (r.id === currentRace ? ' selected' : '') + '>' + r.name + '</option>'; }).join('');
+
+  // Update countries
+  var countries = [];
+  perfs.forEach(function(p) { if (p.nationality && countries.indexOf(p.nationality) === -1) countries.push(p.nationality); });
+  countries.sort();
+  countryFilter.innerHTML = '<option value="">All countries</option>' +
+    countries.map(function(c) { return '<option value="' + c + '"' + (c === currentCountry ? ' selected' : '') + '>' + c + '</option>'; }).join('');
 }
 
 // === Rendering ===
