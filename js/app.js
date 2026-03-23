@@ -476,12 +476,16 @@ async function renderViz() {
 }
 
 function renderProjection(container, entries, toggleHTML, controls) {
+  // Preserve current baseline selection across re-renders
+  var prevBaseline = document.getElementById('baselineSelect');
+  var savedBaselineId = prevBaseline ? prevBaseline.value : null;
+
   // Baseline selector in controls
   controls.innerHTML = '<div class="filter-group">' +
     '<label class="filter-label">Baseline (even pace reference)</label>' +
     '<select id="baselineSelect" style="background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-size:14px;">' +
     entries.map(function(e) {
-      return '<option value="' + e.perf.id + '">' + e.perf.runner + ' — ' + getRaceName(e.perf) + ' ' + e.perf.year +
+      return '<option value="' + e.perf.id + '"' + (e.perf.id === savedBaselineId ? ' selected' : '') + '>' + e.perf.runner + ' — ' + getRaceName(e.perf) + ' ' + e.perf.year +
         ' (' + e.perf.distance_mi + ' mi)</option>';
     }).join('') +
     '</select></div>';
