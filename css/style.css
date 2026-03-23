@@ -20,7 +20,10 @@ body {
   background: var(--bg);
   color: var(--text-primary);
   line-height: 1.5;
+  overflow-x: hidden;
 }
+
+html { overflow-x: hidden; }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
@@ -193,9 +196,9 @@ main { padding: 24px 0 48px; }
 
 .perf-item input[type="checkbox"] { accent-color: var(--blue); width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
 
-.perf-meta { flex: 1; min-width: 0; }
-.perf-runner { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.perf-detail { color: var(--text-secondary); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.perf-meta { flex: 1; min-width: 0; overflow: hidden; }
+.perf-runner { font-weight: 600; font-size: 14px; }
+.perf-detail { color: var(--text-secondary); font-size: 12px; }
 .perf-stats { display: flex; gap: 12px; color: var(--text-secondary); font-size: 12px; flex-shrink: 0; }
 .perf-note { color: var(--orange); font-size: 11px; font-weight: 500; }
 .perf-flag { font-size: 12px; margin-right: 2px; }
@@ -375,17 +378,20 @@ footer a { color: var(--text-secondary); }
   .quick-picks { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; gap: 6px; }
   .quick-pick-btn { padding: 6px 12px; font-size: 12px; }
 
-  /* Performance items: stack vertically */
-  .perf-item { flex-wrap: wrap; padding: 10px 12px; gap: 8px; }
+  /* Performance items: vertical layout for mobile */
+  .perf-item { display: flex; flex-direction: column; align-items: stretch; padding: 10px 12px; gap: 4px; position: relative; padding-right: 50px; }
   .perf-item input[type="checkbox"] { display: none; }
-  .perf-meta { flex-basis: calc(100% - 60px); min-width: 0; }
-  .perf-runner { font-size: 13px; }
-  .perf-detail { font-size: 11px; }
-  .perf-stats { width: 100%; justify-content: flex-start; gap: 10px; font-size: 12px; }
-  .perf-add { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); min-width: 36px; min-height: 36px; display: flex; align-items: center; justify-content: center; font-size: 16px; border-radius: 6px; }
-  .perf-item { position: relative; padding-right: 54px; }
+  .perf-meta { width: 100%; min-width: 0; }
+  .perf-runner { font-size: 14px; word-wrap: break-word; overflow-wrap: break-word; white-space: normal; }
+  .perf-detail { font-size: 12px; word-wrap: break-word; overflow-wrap: break-word; white-space: normal; }
+  .perf-stats { display: flex; gap: 10px; font-size: 12px; flex-wrap: wrap; }
+  .perf-add { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); min-width: 36px; min-height: 36px; display: flex; align-items: center; justify-content: center; font-size: 16px; border-radius: 6px; }
 
-  /* Cart items: bigger tap targets */
+  /* Cart items: bigger tap targets, full text */
+  .cart-item { flex-wrap: wrap; }
+  .cart-item .perf-meta { min-width: 0; }
+  .cart-item .perf-runner { word-wrap: break-word; white-space: normal; }
+  .cart-item .perf-detail { word-wrap: break-word; white-space: normal; }
   .cart-remove { font-size: 24px; padding: 4px 8px; min-width: 36px; min-height: 36px; display: flex; align-items: center; justify-content: center; }
 
   /* Viz tabs: horizontal scroll */
@@ -401,8 +407,13 @@ footer a { color: var(--text-secondary); }
   .chart-card .desc { font-size: 12px; }
 
   /* Toggle labels: wrap better */
-  .year-toggles { gap: 6px; }
-  .year-toggles label { font-size: 12px; }
+  .year-toggles { gap: 4px 8px; }
+  .year-toggles label { font-size: 11px; }
+
+  /* Prevent anything from causing horizontal overflow */
+  .selection-area, .viz-area, .chart-card { overflow: hidden; }
+  .table-wrapper { max-width: 100%; }
+  .viz-content { overflow-x: auto; }
 
   /* Perf list: slightly taller for touch scrolling */
   .perf-list { max-height: 400px; }
