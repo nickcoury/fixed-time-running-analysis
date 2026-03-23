@@ -372,7 +372,7 @@ footer a { color: var(--text-secondary); }
 
   /* Filters stack and fill width */
   .filter-bar { flex-direction: column; gap: 6px; }
-  .filter-bar input, .filter-bar select { min-width: 100%; font-size: 16px; padding: 10px 12px; }
+  .filter-bar input, .filter-bar select { width: 100%; min-width: 0; max-width: 100%; font-size: 16px; padding: 10px 12px; }
 
   /* Quick picks: horizontal scroll instead of wrap */
   .quick-picks { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; gap: 6px; }
@@ -411,7 +411,7 @@ footer a { color: var(--text-secondary); }
   .year-toggles label { font-size: 11px; }
 
   /* Prevent anything from causing horizontal overflow */
-  .selection-area, .viz-area, .chart-card { overflow: hidden; }
+  .selection-area, .viz-area, .chart-card, .filter-bar { overflow: hidden; }
   .table-wrapper { max-width: 100%; }
   .viz-content { overflow-x: auto; }
 
