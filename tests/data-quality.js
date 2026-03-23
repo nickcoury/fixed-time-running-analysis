@@ -105,6 +105,29 @@ test('no duplicate performance IDs', () => {
   return errors;
 });
 
+test('no duplicate runner+year+distance within 5% distance', () => {
+  const groups = {};
+  for (const p of idx.performances) {
+    const key = p.runner.toLowerCase().trim() + '|' + p.year + '|' + (p.distance_id || '');
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(p);
+  }
+  const errors = [];
+  for (const [key, perfs] of Object.entries(groups)) {
+    if (perfs.length <= 1) continue;
+    for (let i = 0; i < perfs.length; i++) {
+      for (let j = i + 1; j < perfs.length; j++) {
+        const a = perfs[i].distance_mi || 0;
+        const b = perfs[j].distance_mi || 0;
+        if (a && b && Math.abs(a - b) / Math.max(a, b) < 0.05) {
+          errors.push(`${perfs[i].runner} ${perfs[i].year}: "${perfs[i].id}" vs "${perfs[j].id}" (${a}mi vs ${b}mi)`);
+        }
+      }
+    }
+  }
+  return errors;
+});
+
 test('every race_id references a known race', () => {
   const raceIds = new Set(idx.races.map(r => r.id));
   const errors = [];

@@ -271,11 +271,48 @@ const distDefs = {
 };
 const distances = [...distanceIds].map(id => distDefs[id] || { id, name: id, unit: 'unknown' });
 
+// Deduplicate: same runner + year + distance_id with distance_mi within 5%
+const groups = {};
+for (const p of performances) {
+  const key = p.runner.toLowerCase().trim() + '|' + p.year + '|' + (p.distance_id || '');
+  if (!groups[key]) groups[key] = [];
+  groups[key].push(p);
+}
+const toRemove = new Set();
+for (const perfs of Object.values(groups)) {
+  if (perfs.length <= 1) continue;
+  const used = new Set();
+  for (let i = 0; i < perfs.length; i++) {
+    if (used.has(i)) continue;
+    const cluster = [perfs[i]];
+    used.add(i);
+    for (let j = i + 1; j < perfs.length; j++) {
+      if (used.has(j)) continue;
+      const a = perfs[i].distance_mi || 0;
+      const b = perfs[j].distance_mi || 0;
+      if (a && b && Math.abs(a - b) / Math.max(a, b) < 0.05) {
+        cluster.push(perfs[j]);
+        used.add(j);
+      }
+    }
+    if (cluster.length > 1) {
+      cluster.sort((a, b) => (b.distance_mi || 0) - (a.distance_mi || 0) || b.id.length - a.id.length);
+      for (let k = 1; k < cluster.length; k++) toRemove.add(cluster[k].id);
+    }
+  }
+}
+const dedupedPerformances = performances.filter(p => !toRemove.has(p.id));
+stats.duplicates = toRemove.size;
+
+// Rebuild races from deduped performances
+const usedRaceIds = new Set(dedupedPerformances.map(p => p.race_id).filter(Boolean));
+const dedupedRaces = Object.values(raceMap).filter(r => usedRaceIds.has(r.id));
+
 // Build new index
 const newIndex = {
   distances: distances,
-  races: Object.values(raceMap),
-  performances: performances,
+  races: dedupedRaces,
+  performances: dedupedPerformances,
 };
 
 // Write
@@ -288,17 +325,18 @@ console.log('Removed - zero duration:', stats.zeroDuration);
 console.log('Removed - no distance_id:', stats.noDistanceId);
 console.log('Removed - below 70% WR:', stats.belowThreshold);
 console.log('Removed - bad data:', stats.badData);
+console.log('Removed - duplicates:', stats.duplicates);
 console.log('Split files fixed on disk:', stats.filesFixed || 0);
-console.log('KEPT:', stats.kept);
+console.log('KEPT:', dedupedPerformances.length);
 console.log();
 console.log('By distance:');
 const byDist = {};
-for (const p of performances) {
+for (const p of dedupedPerformances) {
   byDist[p.distance_id] = (byDist[p.distance_id] || 0) + 1;
 }
 for (const [d, c] of Object.entries(byDist).sort((a, b) => b[1] - a[1])) {
   console.log('  ' + d + ': ' + c);
 }
 console.log();
-console.log('Races:', Object.keys(raceMap).length);
+console.log('Races:', dedupedRaces.length);
 console.log('Index written to', INDEX_PATH);
