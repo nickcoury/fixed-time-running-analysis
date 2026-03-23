@@ -399,6 +399,54 @@
           "notes": "2021-2025 editions. Overall results only."
         }
       ]
+    },
+    "six-days-in-the-dome": {
+      "name": "Six Days in the Dome",
+      "location": "Milwaukee, WI, USA",
+      "distances": ["48h", "24h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "aravaipa",
+          "event_ids": [132],
+          "has_laps": false,
+          "scrape_status": "done",
+          "files_written": 58,
+          "notes": "2021 edition on Aravaipa. 443m indoor loop. Also has raceresult 6 Days In The Dome events (separate)."
+        }
+      ]
+    },
+    "vulture-mine": {
+      "name": "Vulture Mine",
+      "location": "AZ, USA",
+      "distances": ["24h", "12h", "6h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "aravaipa",
+          "event_ids": [102],
+          "has_laps": false,
+          "scrape_status": "done",
+          "files_written": 73,
+          "notes": "2020 edition. 8.5km desert loop. Overall results only."
+        }
+      ]
+    },
+    "chase-the-moon": {
+      "name": "Chase the Moon",
+      "location": "AZ, USA",
+      "distances": ["12h"],
+      "sport": "running",
+      "sources": [
+        {
+          "platform": "aravaipa",
+          "event_ids": [422, 339],
+          "has_laps": false,
+          "scrape_status": "done",
+          "files_written": 258,
+          "notes": "2024-2025 editions. 16.7km loop (solo). Overall results only."
+        }
+      ]
     }
   }
 }
