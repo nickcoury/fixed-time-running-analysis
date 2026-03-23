@@ -1191,6 +1191,14 @@
       "distances": [
         "12h"
       ]
+    },
+    {
+      "id": "desert-solstice",
+      "name": "Desert Solstice 24 Hour"
+    },
+    {
+      "id": "iau-24h-world-championship-taipei",
+      "name": "IAU 24h World Championship - Taipei"
     }
   ],
   "performances": [
@@ -53402,6 +53410,60 @@
       "splits_file": "iau-moscow-1994-100k-zaripov-farit.json",
       "gender": "M",
       "nationality": "RUS"
+    },
+    {
+      "id": "desert-solstice-2021-nick-coury-strava",
+      "runner": "Nick Coury",
+      "gender": "M",
+      "nationality": "USA",
+      "race_id": "desert-solstice",
+      "distance_id": "24h",
+      "distance_mi": 173,
+      "duration": "24:00:00",
+      "pace_sec": 499,
+      "year": 2021,
+      "splits_file": "desert-solstice-2021-nick-coury-strava.json",
+      "note": "American Record"
+    },
+    {
+      "id": "dome-2021-nick-coury-strava",
+      "runner": "Nick Coury",
+      "gender": "M",
+      "nationality": "USA",
+      "race_id": "6-days-in-the-dome",
+      "distance_id": "24h",
+      "distance_mi": 100,
+      "duration": "13:21:00",
+      "pace_sec": 481,
+      "year": 2021,
+      "splits_file": "dome-2021-nick-coury-strava.json",
+      "note": "100mi PR"
+    },
+    {
+      "id": "iau-24h-wc-albi-2019-nick-coury",
+      "runner": "Nick Coury",
+      "gender": "M",
+      "nationality": "USA",
+      "race_id": "iau-24h-world-championship-albi",
+      "distance_id": "24h",
+      "distance_mi": 120.5,
+      "duration": "24:00:00",
+      "pace_sec": 717,
+      "year": 2019,
+      "splits_file": "iau-24h-wc-albi-2019-nick-coury.json"
+    },
+    {
+      "id": "iau-taipei-2023-nick-coury",
+      "runner": "Nick Coury",
+      "gender": "M",
+      "nationality": "USA",
+      "race_id": "iau-24h-world-championship-taipei",
+      "distance_id": "24h",
+      "distance_mi": 121.53,
+      "duration": "24:00:00",
+      "pace_sec": 711,
+      "year": 2023,
+      "splits_file": "iau-taipei-2023-24h-coury-nicholas.json"
     }
   ]
 }

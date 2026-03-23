@@ -228,9 +228,11 @@ test('distance_mi is not a lap count (km/mi ratio sanity)', () => {
 
 // === Threshold tests ===
 
-test('all timed-event performances meet 70% WR threshold', () => {
+test('all timed-event performances meet 70% WR threshold (pinned runners exempt)', () => {
+  const pinned = ['nick coury', 'nicholas coury'];
   const errors = [];
   for (const p of idx.performances) {
+    if (pinned.includes(p.runner.toLowerCase().trim())) continue;
     const wr = WR[p.distance_id];
     if (!wr || wr.M_sec) continue; // skip distance events
     const gender = p.gender || 'M';

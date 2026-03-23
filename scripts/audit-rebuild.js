@@ -16,6 +16,9 @@ const path = require('path');
 const SPLITS_DIR = path.join(__dirname, '..', 'data', 'splits');
 const INDEX_PATH = path.join(__dirname, '..', 'data', 'index.json');
 
+// Pinned runners — always included regardless of threshold
+const PINNED_RUNNERS = ['nick coury', 'nicholas coury'];
+
 // World Records for threshold calculation
 // Timed events: distance in miles. Distance events: time in seconds.
 const WR = {
@@ -189,9 +192,10 @@ for (const filename of files) {
     continue;
   }
 
-  // Apply threshold
+  // Apply threshold (bypass for pinned runners)
   const gender = data.gender || 'M';
-  if (!passesThreshold(distId, gender, data)) {
+  const isPinned = data.runner && PINNED_RUNNERS.includes(data.runner.toLowerCase().trim());
+  if (!isPinned && !passesThreshold(distId, gender, data)) {
     stats.belowThreshold++;
     continue;
   }
