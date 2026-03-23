@@ -469,6 +469,7 @@ function renderCartList() {
 }
 
 function updateAll() {
+  saveSession();
   // Update pill count
   document.getElementById('pillCount').textContent = selected.size;
 
