@@ -548,6 +548,7 @@ async function renderViz() {
   document.querySelectorAll('.viz-tab').forEach(function(tab) {
     var viz = tab.dataset.viz;
     var needsMile = viz === 'pace' || viz === 'gap' || viz === 'heatmap';
+    if (viz === 'raw') { tab.classList.remove('disabled'); return; }
     tab.classList.toggle('disabled', needsMile && mileEntries.length < 2);
   });
 
@@ -589,6 +590,9 @@ async function renderViz() {
         renderHeatmap(content, mileEntries);
       }
       controls.innerHTML = '';
+      break;
+    case 'raw':
+      renderRawData(content, entries, controls);
       break;
   }
 }
@@ -805,6 +809,95 @@ function renderHeatmap(container, mileEntries) {
 
   html += '</tbody></table></div></div>';
   container.insertAdjacentHTML('beforeend', html);
+}
+
+function renderRawData(container, entries, controls) {
+  // Runner selector if multiple
+  if (entries.length > 1) {
+    var prevSelect = document.getElementById('rawRunnerSelect');
+    var savedVal = prevSelect ? prevSelect.value : entries[0].perf.id;
+    controls.innerHTML = '<div class="filter-group">' +
+      '<label class="filter-label">Runner</label>' +
+      '<select id="rawRunnerSelect" style="background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-size:14px;">' +
+      entries.map(function(e) {
+        return '<option value="' + e.perf.id + '"' + (e.perf.id === savedVal ? ' selected' : '') + '>' +
+          e.perf.runner + ' — ' + getRaceName(e.perf) + ' ' + e.perf.year + '</option>';
+      }).join('') + '</select></div>';
+    document.getElementById('rawRunnerSelect').addEventListener('change', function() { renderViz(); });
+  } else {
+    controls.innerHTML = '';
+  }
+
+  var selectedId = entries.length > 1 ? document.getElementById('rawRunnerSelect').value : entries[0].perf.id;
+  var entry = entries.find(function(e) { return e.perf.id === selectedId; }) || entries[0];
+  var p = entry.perf;
+  var s = entry.splits;
+
+  // Performance metadata
+  var html = '<div class="chart-card"><h3>Performance Metadata</h3>' +
+    '<div class="table-wrapper"><table><tbody>';
+  var fields = [
+    ['Runner', p.runner],
+    ['Race', getRaceName(p) + ' ' + p.year],
+    ['Distance', p.distance_mi + ' mi (' + p.distance_id + ')'],
+    ['Duration', p.duration],
+    ['Pace', fmtPace(p.pace_sec) + '/mi (' + p.pace_sec.toFixed(1) + ' sec/mi)'],
+    ['Gender', p.gender === 'M' ? 'Male' : p.gender === 'F' ? 'Female' : p.gender],
+    ['Nationality', p.nationality || '—'],
+    ['Negative Split', p.negative_split ? 'Yes' : 'No'],
+    ['Note', p.note || '—'],
+    ['Splits File', p.splits_file],
+    ['ID', p.id],
+  ];
+  fields.forEach(function(f) {
+    html += '<tr><td style="font-weight:600;white-space:nowrap;padding-right:16px">' + f[0] + '</td><td>' + f[1] + '</td></tr>';
+  });
+  html += '</tbody></table></div></div>';
+
+  // Split data
+  html += '<div class="chart-card"><h3>Split Data</h3>' +
+    '<div class="desc">Source: ' + (s.source || '—') + ' | Type: ' + (s.data_type || '—') + '</div>';
+
+  if (s.miles && s.miles.length > 0) {
+    html += '<div class="table-wrapper"><table><thead><tr>' +
+      '<th>Mile</th><th>Split</th><th>Moving</th><th>Cumulative</th><th>Pace</th>' +
+      '</tr></thead><tbody>';
+    s.miles.forEach(function(m) {
+      html += '<tr>' +
+        '<td>' + m.mile + '</td>' +
+        '<td>' + fmtPace(m.split_sec) + '</td>' +
+        '<td>' + fmtPace(m.moving_sec) + '</td>' +
+        '<td>' + fmtTime(m.cum_sec) + '</td>' +
+        '<td>' + fmtPace(m.moving_sec) + '/mi</td>' +
+        '</tr>';
+    });
+    html += '</tbody></table></div>';
+  } else if (s.checkpoints && s.checkpoints.length > 0) {
+    html += '<div class="table-wrapper"><table><thead><tr>' +
+      '<th>Label</th><th>Distance (mi)</th><th>Distance (km)</th><th>Cumulative Time</th><th>Segment Pace</th>' +
+      '</tr></thead><tbody>';
+    var prevDist = 0, prevTime = 0;
+    s.checkpoints.forEach(function(cp) {
+      var dist = cp.distance_mi || 0;
+      var time = cp.cum_sec || cp.elapsed_sec || 0;
+      var segDist = dist - prevDist;
+      var segTime = time - prevTime;
+      var segPace = segDist > 0 ? segTime / segDist : 0;
+      html += '<tr>' +
+        '<td>' + (cp.label || '—') + '</td>' +
+        '<td>' + (cp.distance_mi || '—') + '</td>' +
+        '<td>' + (cp.distance_km || '—') + '</td>' +
+        '<td>' + (time ? fmtTime(time) : '—') + '</td>' +
+        '<td>' + (segPace > 0 ? fmtPace(segPace) + '/mi' : '—') + '</td>' +
+        '</tr>';
+      if (dist > 0) prevDist = dist;
+      if (time > 0) prevTime = time;
+    });
+    html += '</tbody></table></div>';
+  }
+
+  html += '</div>';
+  container.innerHTML = html;
 }
 
 // === Shared Helpers ===
