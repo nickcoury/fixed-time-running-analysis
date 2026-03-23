@@ -37,6 +37,16 @@
     <select id="filterRace"><option value="">All races</option></select>
     <select id="filterCountry"><option value="">All countries</option></select>
     <select id="filterGender"><option value="">All genders</option><option value="M">Men</option><option value="F">Women</option></select>
+    <select id="sortBy">
+      <option value="dist-desc">Furthest distance</option>
+      <option value="dist-asc">Shortest distance</option>
+      <option value="year-desc">Newest</option>
+      <option value="year-asc">Oldest</option>
+      <option value="pace-asc">Fastest pace</option>
+      <option value="pace-desc">Slowest pace</option>
+      <option value="runner-asc">Runner A–Z</option>
+      <option value="runner-desc">Runner Z–A</option>
+    </select>
     <label class="filter-checkbox"><input type="checkbox" id="filterNegSplit"> Negative splits only</label>
   </div>
 
@@ -74,6 +84,6 @@
 </main>
 
 <footer><div class="container">Built by <a href="https://github.com/nickcoury">Nick Coury</a> &amp; Claw</div></footer>
-<script src="js/app.js?v=3"></script>
+<script src="js/app.js?v=4"></script>
 </body>
 </html>

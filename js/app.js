@@ -27,6 +27,7 @@ function getUrlState() {
     gender: params.get('gender') || '',
     search: params.get('q') || '',
     neg: params.get('neg') === '1',
+    sort: params.get('sort') || 'dist-desc',
     viz: params.get('viz') || 'projection',
   };
 }
@@ -46,6 +47,8 @@ function pushUrlState() {
   if (gender) params.set('gender', gender);
   if (search) params.set('q', search);
   if (neg) params.set('neg', '1');
+  var sort = document.getElementById('sortBy').value;
+  if (sort !== 'dist-desc') params.set('sort', sort);
   if (currentViz !== 'projection') params.set('viz', currentViz);
 
   var qs = params.toString();
@@ -141,6 +144,21 @@ function parseDuration(dur) {
   return parts.length === 3 ? parts[0] * 3600 + parts[1] * 60 + parts[2] : 0;
 }
 
+function sortPerfs(perfs) {
+  var sortVal = document.getElementById('sortBy').value;
+  var sorters = {
+    'dist-desc': function(a, b) { return b.distance_mi - a.distance_mi || b.year - a.year; },
+    'dist-asc': function(a, b) { return a.distance_mi - b.distance_mi || b.year - a.year; },
+    'year-desc': function(a, b) { return b.year - a.year || b.distance_mi - a.distance_mi; },
+    'year-asc': function(a, b) { return a.year - b.year || b.distance_mi - a.distance_mi; },
+    'pace-asc': function(a, b) { return (a.pace_sec || 9999) - (b.pace_sec || 9999); },
+    'pace-desc': function(a, b) { return (b.pace_sec || 0) - (a.pace_sec || 0); },
+    'runner-asc': function(a, b) { return a.runner.localeCompare(b.runner) || b.distance_mi - a.distance_mi; },
+    'runner-desc': function(a, b) { return b.runner.localeCompare(a.runner) || b.distance_mi - a.distance_mi; },
+  };
+  perfs.sort(sorters[sortVal] || sorters['dist-desc']);
+}
+
 function hasMileData(splits) {
   return splits.miles && splits.miles.length > 0;
 }
@@ -158,6 +176,7 @@ function initUI() {
   document.getElementById('filterGender').value = state.gender;
   document.getElementById('searchInput').value = state.search;
   document.getElementById('filterNegSplit').checked = state.neg;
+  document.getElementById('sortBy').value = state.sort;
   currentViz = state.viz;
 
   // Cascade first so race/country dropdowns are populated for this distance
@@ -322,9 +341,7 @@ function applyFilters() {
     });
   }
 
-  // Sort by distance desc (best performances first)
-  filteredPerfs.sort(function(a, b) { return b.distance_mi - a.distance_mi || b.year - a.year; });
-
+  sortPerfs(filteredPerfs);
   pushUrlState();
   renderBrowseList();
 }
@@ -833,7 +850,7 @@ function wireEvents() {
   document.getElementById('pillSelected').addEventListener('click', function() { switchView('cart'); });
 
   // Filters
-  ['filterDistance', 'filterRace', 'filterCountry', 'filterGender'].forEach(function(id) {
+  ['filterDistance', 'filterRace', 'filterCountry', 'filterGender', 'sortBy'].forEach(function(id) {
     document.getElementById(id).addEventListener('change', applyFilters);
   });
   document.getElementById('searchInput').addEventListener('input', applyFilters);
@@ -873,6 +890,7 @@ window.addEventListener('popstate', function() {
   document.getElementById('filterGender').value = state.gender;
   document.getElementById('searchInput').value = state.search;
   document.getElementById('filterNegSplit').checked = state.neg;
+  document.getElementById('sortBy').value = state.sort;
   currentViz = state.viz;
   document.querySelectorAll('.viz-tab').forEach(function(t) {
     t.classList.toggle('active', t.dataset.viz === currentViz);
@@ -899,7 +917,7 @@ window.addEventListener('popstate', function() {
              String(p.year).indexOf(search) >= 0;
     });
   }
-  filteredPerfs.sort(function(a, b) { return b.distance_mi - a.distance_mi || b.year - a.year; });
+  sortPerfs(filteredPerfs);
   renderBrowseList();
   if (selected.size > 0) renderViz();
 });
