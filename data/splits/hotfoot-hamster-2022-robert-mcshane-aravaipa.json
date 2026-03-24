@@ -6,14 +6,71 @@
   "distance_id": "12h",
   "duration_sec": 43200,
   "duration": "12:00:00",
-  "data_type": "checkpoints",
+  "data_type": "miles",
   "source": "live.aravaiparunning.com event 207",
   "gender": "M",
-  "checkpoints": [
+  "loop_meters": 500.0,
+  "total_laps": 40,
+  "miles": [
     {
-      "name": "Finish",
-      "distance_mi": 12.43,
-      "time_sec": 43200
+      "mile": 1,
+      "split_sec": 734.0,
+      "moving_sec": 734.0,
+      "cum_sec": 734.0
+    },
+    {
+      "mile": 2,
+      "split_sec": 816.1,
+      "moving_sec": 816.1,
+      "cum_sec": 1550.1
+    },
+    {
+      "mile": 3,
+      "split_sec": 1108.7,
+      "moving_sec": 1108.7,
+      "cum_sec": 2658.8
+    },
+    {
+      "mile": 4,
+      "split_sec": 1620.6,
+      "moving_sec": 1620.6,
+      "cum_sec": 4279.3
+    },
+    {
+      "mile": 5,
+      "split_sec": 1055.3,
+      "moving_sec": 1055.3,
+      "cum_sec": 5334.6
+    },
+    {
+      "mile": 6,
+      "split_sec": 1015.1,
+      "moving_sec": 1015.1,
+      "cum_sec": 6349.7
+    },
+    {
+      "mile": 7,
+      "split_sec": 1220.9,
+      "moving_sec": 1220.9,
+      "cum_sec": 7570.6
+    },
+    {
+      "mile": 8,
+      "split_sec": 1028.6,
+      "moving_sec": 1028.6,
+      "cum_sec": 8599.2
+    },
+    {
+      "mile": 9,
+      "split_sec": 1118.2,
+      "moving_sec": 1118.2,
+      "cum_sec": 9717.4
+    },
+    {
+      "mile": 10,
+      "split_sec": 1843.9,
+      "moving_sec": 1843.9,
+      "cum_sec": 11561.3
     }
   ]
 }

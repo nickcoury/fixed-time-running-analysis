@@ -6,14 +6,101 @@
   "distance_id": "12h",
   "duration_sec": 43200,
   "duration": "12:00:00",
-  "data_type": "checkpoints",
+  "data_type": "miles",
   "source": "live.aravaiparunning.com event 190",
   "gender": "M",
-  "checkpoints": [
+  "loop_meters": 500.0,
+  "total_laps": 50,
+  "miles": [
     {
-      "name": "Finish",
-      "distance_mi": 15.53,
-      "time_sec": 43200
+      "mile": 1,
+      "split_sec": 566.8,
+      "moving_sec": 566.8,
+      "cum_sec": 566.8
+    },
+    {
+      "mile": 2,
+      "split_sec": 564.6,
+      "moving_sec": 564.6,
+      "cum_sec": 1131.4
+    },
+    {
+      "mile": 3,
+      "split_sec": 570.0,
+      "moving_sec": 570.0,
+      "cum_sec": 1701.4
+    },
+    {
+      "mile": 4,
+      "split_sec": 615.7,
+      "moving_sec": 615.7,
+      "cum_sec": 2317.0
+    },
+    {
+      "mile": 5,
+      "split_sec": 556.4,
+      "moving_sec": 556.4,
+      "cum_sec": 2873.4
+    },
+    {
+      "mile": 6,
+      "split_sec": 579.8,
+      "moving_sec": 579.8,
+      "cum_sec": 3453.2
+    },
+    {
+      "mile": 7,
+      "split_sec": 917.6,
+      "moving_sec": 917.6,
+      "cum_sec": 4370.9
+    },
+    {
+      "mile": 8,
+      "split_sec": 551.9,
+      "moving_sec": 551.9,
+      "cum_sec": 4922.8
+    },
+    {
+      "mile": 9,
+      "split_sec": 563.4,
+      "moving_sec": 563.4,
+      "cum_sec": 5486.2
+    },
+    {
+      "mile": 10,
+      "split_sec": 692.0,
+      "moving_sec": 692.0,
+      "cum_sec": 6178.2
+    },
+    {
+      "mile": 11,
+      "split_sec": 579.3,
+      "moving_sec": 579.3,
+      "cum_sec": 6757.5
+    },
+    {
+      "mile": 12,
+      "split_sec": 750.4,
+      "moving_sec": 750.4,
+      "cum_sec": 7508.0
+    },
+    {
+      "mile": 13,
+      "split_sec": 665.3,
+      "moving_sec": 665.3,
+      "cum_sec": 8173.3
+    },
+    {
+      "mile": 14,
+      "split_sec": 595.0,
+      "moving_sec": 595.0,
+      "cum_sec": 8768.2
+    },
+    {
+      "mile": 15,
+      "split_sec": 1082.5,
+      "moving_sec": 1082.5,
+      "cum_sec": 9850.8
     }
   ]
 }

@@ -2,18 +2,957 @@
   "runner": "Thomas Nolan",
   "race": "Jackpot Ultras",
   "year": 2024,
-  "distance_mi": 154.7,
+  "distance_mi": 157.01,
   "distance_id": "48h",
   "duration_sec": 172800,
   "duration": "48:00:00",
-  "data_type": "checkpoints",
+  "data_type": "miles",
   "source": "live.aravaiparunning.com event 302",
   "gender": "M",
-  "checkpoints": [
+  "loop_meters": 3716.0,
+  "total_laps": 68,
+  "miles": [
     {
-      "name": "Finish",
-      "distance_mi": 154.7,
-      "time_sec": 172800
+      "mile": 1,
+      "split_sec": 604.5,
+      "moving_sec": 604.5,
+      "cum_sec": 604.5
+    },
+    {
+      "mile": 2,
+      "split_sec": 604.5,
+      "moving_sec": 604.5,
+      "cum_sec": 1209.0
+    },
+    {
+      "mile": 3,
+      "split_sec": 593.6,
+      "moving_sec": 593.6,
+      "cum_sec": 1802.6
+    },
+    {
+      "mile": 4,
+      "split_sec": 588.7,
+      "moving_sec": 588.7,
+      "cum_sec": 2391.2
+    },
+    {
+      "mile": 5,
+      "split_sec": 602.2,
+      "moving_sec": 602.2,
+      "cum_sec": 2993.4
+    },
+    {
+      "mile": 6,
+      "split_sec": 624.1,
+      "moving_sec": 624.1,
+      "cum_sec": 3617.5
+    },
+    {
+      "mile": 7,
+      "split_sec": 624.4,
+      "moving_sec": 624.4,
+      "cum_sec": 4242.0
+    },
+    {
+      "mile": 8,
+      "split_sec": 628.1,
+      "moving_sec": 628.1,
+      "cum_sec": 4870.1
+    },
+    {
+      "mile": 9,
+      "split_sec": 628.1,
+      "moving_sec": 628.1,
+      "cum_sec": 5498.2
+    },
+    {
+      "mile": 10,
+      "split_sec": 666.2,
+      "moving_sec": 666.2,
+      "cum_sec": 6164.4
+    },
+    {
+      "mile": 11,
+      "split_sec": 678.0,
+      "moving_sec": 678.0,
+      "cum_sec": 6842.4
+    },
+    {
+      "mile": 12,
+      "split_sec": 655.1,
+      "moving_sec": 655.1,
+      "cum_sec": 7497.5
+    },
+    {
+      "mile": 13,
+      "split_sec": 627.6,
+      "moving_sec": 627.6,
+      "cum_sec": 8125.0
+    },
+    {
+      "mile": 14,
+      "split_sec": 632.5,
+      "moving_sec": 632.5,
+      "cum_sec": 8757.6
+    },
+    {
+      "mile": 15,
+      "split_sec": 661.5,
+      "moving_sec": 661.5,
+      "cum_sec": 9419.1
+    },
+    {
+      "mile": 16,
+      "split_sec": 661.5,
+      "moving_sec": 661.5,
+      "cum_sec": 10080.6
+    },
+    {
+      "mile": 17,
+      "split_sec": 722.7,
+      "moving_sec": 722.7,
+      "cum_sec": 10803.3
+    },
+    {
+      "mile": 18,
+      "split_sec": 734.6,
+      "moving_sec": 734.6,
+      "cum_sec": 11537.9
+    },
+    {
+      "mile": 19,
+      "split_sec": 712.3,
+      "moving_sec": 712.3,
+      "cum_sec": 12250.2
+    },
+    {
+      "mile": 20,
+      "split_sec": 692.3,
+      "moving_sec": 692.3,
+      "cum_sec": 12942.5
+    },
+    {
+      "mile": 21,
+      "split_sec": 676.2,
+      "moving_sec": 676.2,
+      "cum_sec": 13618.8
+    },
+    {
+      "mile": 22,
+      "split_sec": 619.0,
+      "moving_sec": 619.0,
+      "cum_sec": 14237.8
+    },
+    {
+      "mile": 23,
+      "split_sec": 619.0,
+      "moving_sec": 619.0,
+      "cum_sec": 14856.8
+    },
+    {
+      "mile": 24,
+      "split_sec": 720.5,
+      "moving_sec": 720.5,
+      "cum_sec": 15577.2
+    },
+    {
+      "mile": 25,
+      "split_sec": 730.5,
+      "moving_sec": 730.5,
+      "cum_sec": 16307.7
+    },
+    {
+      "mile": 26,
+      "split_sec": 682.9,
+      "moving_sec": 682.9,
+      "cum_sec": 16990.6
+    },
+    {
+      "mile": 27,
+      "split_sec": 651.3,
+      "moving_sec": 651.3,
+      "cum_sec": 17641.9
+    },
+    {
+      "mile": 28,
+      "split_sec": 655.8,
+      "moving_sec": 655.8,
+      "cum_sec": 18297.7
+    },
+    {
+      "mile": 29,
+      "split_sec": 666.9,
+      "moving_sec": 666.9,
+      "cum_sec": 18964.7
+    },
+    {
+      "mile": 30,
+      "split_sec": 666.9,
+      "moving_sec": 666.9,
+      "cum_sec": 19631.6
+    },
+    {
+      "mile": 31,
+      "split_sec": 806.8,
+      "moving_sec": 806.8,
+      "cum_sec": 20438.4
+    },
+    {
+      "mile": 32,
+      "split_sec": 809.3,
+      "moving_sec": 809.3,
+      "cum_sec": 21247.7
+    },
+    {
+      "mile": 33,
+      "split_sec": 798.4,
+      "moving_sec": 798.4,
+      "cum_sec": 22046.1
+    },
+    {
+      "mile": 34,
+      "split_sec": 793.2,
+      "moving_sec": 793.2,
+      "cum_sec": 22839.2
+    },
+    {
+      "mile": 35,
+      "split_sec": 762.3,
+      "moving_sec": 762.3,
+      "cum_sec": 23601.6
+    },
+    {
+      "mile": 36,
+      "split_sec": 708.7,
+      "moving_sec": 708.7,
+      "cum_sec": 24310.2
+    },
+    {
+      "mile": 37,
+      "split_sec": 711.6,
+      "moving_sec": 711.6,
+      "cum_sec": 25021.8
+    },
+    {
+      "mile": 38,
+      "split_sec": 761.5,
+      "moving_sec": 761.5,
+      "cum_sec": 25783.4
+    },
+    {
+      "mile": 39,
+      "split_sec": 761.5,
+      "moving_sec": 761.5,
+      "cum_sec": 26544.9
+    },
+    {
+      "mile": 40,
+      "split_sec": 811.5,
+      "moving_sec": 811.5,
+      "cum_sec": 27356.4
+    },
+    {
+      "mile": 41,
+      "split_sec": 828.4,
+      "moving_sec": 828.4,
+      "cum_sec": 28184.8
+    },
+    {
+      "mile": 42,
+      "split_sec": 853.1,
+      "moving_sec": 853.1,
+      "cum_sec": 29038.0
+    },
+    {
+      "mile": 43,
+      "split_sec": 884.9,
+      "moving_sec": 884.9,
+      "cum_sec": 29922.9
+    },
+    {
+      "mile": 44,
+      "split_sec": 868.8,
+      "moving_sec": 868.8,
+      "cum_sec": 30791.7
+    },
+    {
+      "mile": 45,
+      "split_sec": 760.3,
+      "moving_sec": 760.3,
+      "cum_sec": 31552.0
+    },
+    {
+      "mile": 46,
+      "split_sec": 760.3,
+      "moving_sec": 760.3,
+      "cum_sec": 32312.2
+    },
+    {
+      "mile": 47,
+      "split_sec": 771.3,
+      "moving_sec": 771.3,
+      "cum_sec": 33083.5
+    },
+    {
+      "mile": 48,
+      "split_sec": 773.7,
+      "moving_sec": 773.7,
+      "cum_sec": 33857.3
+    },
+    {
+      "mile": 49,
+      "split_sec": 816.5,
+      "moving_sec": 816.5,
+      "cum_sec": 34673.7
+    },
+    {
+      "mile": 50,
+      "split_sec": 857.4,
+      "moving_sec": 857.4,
+      "cum_sec": 35531.1
+    },
+    {
+      "mile": 51,
+      "split_sec": 859.7,
+      "moving_sec": 859.7,
+      "cum_sec": 36390.8
+    },
+    {
+      "mile": 52,
+      "split_sec": 869.0,
+      "moving_sec": 869.0,
+      "cum_sec": 37259.8
+    },
+    {
+      "mile": 53,
+      "split_sec": 869.0,
+      "moving_sec": 869.0,
+      "cum_sec": 38128.8
+    },
+    {
+      "mile": 54,
+      "split_sec": 832.2,
+      "moving_sec": 832.2,
+      "cum_sec": 38961.0
+    },
+    {
+      "mile": 55,
+      "split_sec": 827.8,
+      "moving_sec": 827.8,
+      "cum_sec": 39788.8
+    },
+    {
+      "mile": 56,
+      "split_sec": 848.6,
+      "moving_sec": 848.6,
+      "cum_sec": 40637.4
+    },
+    {
+      "mile": 57,
+      "split_sec": 863.5,
+      "moving_sec": 863.5,
+      "cum_sec": 41500.9
+    },
+    {
+      "mile": 58,
+      "split_sec": 884.6,
+      "moving_sec": 884.6,
+      "cum_sec": 42385.4
+    },
+    {
+      "mile": 59,
+      "split_sec": 940.1,
+      "moving_sec": 940.1,
+      "cum_sec": 43325.6
+    },
+    {
+      "mile": 60,
+      "split_sec": 940.1,
+      "moving_sec": 940.1,
+      "cum_sec": 44265.7
+    },
+    {
+      "mile": 61,
+      "split_sec": 1012.6,
+      "moving_sec": 1012.6,
+      "cum_sec": 45278.3
+    },
+    {
+      "mile": 62,
+      "split_sec": 1015.1,
+      "moving_sec": 1015.1,
+      "cum_sec": 46293.4
+    },
+    {
+      "mile": 63,
+      "split_sec": 1137.0,
+      "moving_sec": 1137.0,
+      "cum_sec": 47430.5
+    },
+    {
+      "mile": 64,
+      "split_sec": 1200.7,
+      "moving_sec": 1200.7,
+      "cum_sec": 48631.1
+    },
+    {
+      "mile": 65,
+      "split_sec": 1160.5,
+      "moving_sec": 1160.5,
+      "cum_sec": 49791.6
+    },
+    {
+      "mile": 66,
+      "split_sec": 1085.1,
+      "moving_sec": 1085.1,
+      "cum_sec": 50876.7
+    },
+    {
+      "mile": 67,
+      "split_sec": 1091.0,
+      "moving_sec": 1091.0,
+      "cum_sec": 51967.7
+    },
+    {
+      "mile": 68,
+      "split_sec": 1236.9,
+      "moving_sec": 1236.9,
+      "cum_sec": 53204.6
+    },
+    {
+      "mile": 69,
+      "split_sec": 1236.9,
+      "moving_sec": 1236.9,
+      "cum_sec": 54441.5
+    },
+    {
+      "mile": 70,
+      "split_sec": 1316.8,
+      "moving_sec": 1316.8,
+      "cum_sec": 55758.3
+    },
+    {
+      "mile": 71,
+      "split_sec": 1346.3,
+      "moving_sec": 1346.3,
+      "cum_sec": 57104.7
+    },
+    {
+      "mile": 72,
+      "split_sec": 1312.3,
+      "moving_sec": 1312.3,
+      "cum_sec": 58416.9
+    },
+    {
+      "mile": 73,
+      "split_sec": 1265.4,
+      "moving_sec": 1265.4,
+      "cum_sec": 59682.3
+    },
+    {
+      "mile": 74,
+      "split_sec": 1252.5,
+      "moving_sec": 1252.5,
+      "cum_sec": 60934.9
+    },
+    {
+      "mile": 75,
+      "split_sec": 1150.5,
+      "moving_sec": 1150.5,
+      "cum_sec": 62085.4
+    },
+    {
+      "mile": 76,
+      "split_sec": 1150.5,
+      "moving_sec": 1150.5,
+      "cum_sec": 63235.9
+    },
+    {
+      "mile": 77,
+      "split_sec": 1022.1,
+      "moving_sec": 1022.1,
+      "cum_sec": 64258.0
+    },
+    {
+      "mile": 78,
+      "split_sec": 990.4,
+      "moving_sec": 990.4,
+      "cum_sec": 65248.4
+    },
+    {
+      "mile": 79,
+      "split_sec": 1074.0,
+      "moving_sec": 1074.0,
+      "cum_sec": 66322.4
+    },
+    {
+      "mile": 80,
+      "split_sec": 1160.1,
+      "moving_sec": 1160.1,
+      "cum_sec": 67482.5
+    },
+    {
+      "mile": 81,
+      "split_sec": 1158.0,
+      "moving_sec": 1158.0,
+      "cum_sec": 68640.5
+    },
+    {
+      "mile": 82,
+      "split_sec": 1148.9,
+      "moving_sec": 1148.9,
+      "cum_sec": 69789.4
+    },
+    {
+      "mile": 83,
+      "split_sec": 1148.9,
+      "moving_sec": 1148.9,
+      "cum_sec": 70938.3
+    },
+    {
+      "mile": 84,
+      "split_sec": 2215.2,
+      "moving_sec": 2215.2,
+      "cum_sec": 73153.4
+    },
+    {
+      "mile": 85,
+      "split_sec": 2367.5,
+      "moving_sec": 2367.5,
+      "cum_sec": 75520.9
+    },
+    {
+      "mile": 86,
+      "split_sec": 1600.1,
+      "moving_sec": 1600.1,
+      "cum_sec": 77121.0
+    },
+    {
+      "mile": 87,
+      "split_sec": 1011.7,
+      "moving_sec": 1011.7,
+      "cum_sec": 78132.8
+    },
+    {
+      "mile": 88,
+      "split_sec": 926.0,
+      "moving_sec": 926.0,
+      "cum_sec": 79058.7
+    },
+    {
+      "mile": 89,
+      "split_sec": 678.0,
+      "moving_sec": 678.0,
+      "cum_sec": 79736.7
+    },
+    {
+      "mile": 90,
+      "split_sec": 678.0,
+      "moving_sec": 678.0,
+      "cum_sec": 80414.7
+    },
+    {
+      "mile": 91,
+      "split_sec": 884.9,
+      "moving_sec": 884.9,
+      "cum_sec": 81299.7
+    },
+    {
+      "mile": 92,
+      "split_sec": 896.3,
+      "moving_sec": 896.3,
+      "cum_sec": 82195.9
+    },
+    {
+      "mile": 93,
+      "split_sec": 933.9,
+      "moving_sec": 933.9,
+      "cum_sec": 83129.9
+    },
+    {
+      "mile": 94,
+      "split_sec": 955.2,
+      "moving_sec": 955.2,
+      "cum_sec": 84085.1
+    },
+    {
+      "mile": 95,
+      "split_sec": 1042.0,
+      "moving_sec": 1042.0,
+      "cum_sec": 85127.1
+    },
+    {
+      "mile": 96,
+      "split_sec": 1218.2,
+      "moving_sec": 1218.2,
+      "cum_sec": 86345.3
+    },
+    {
+      "mile": 97,
+      "split_sec": 1216.8,
+      "moving_sec": 1216.8,
+      "cum_sec": 87562.1
+    },
+    {
+      "mile": 98,
+      "split_sec": 1152.6,
+      "moving_sec": 1152.6,
+      "cum_sec": 88714.7
+    },
+    {
+      "mile": 99,
+      "split_sec": 1152.6,
+      "moving_sec": 1152.6,
+      "cum_sec": 89867.3
+    },
+    {
+      "mile": 100,
+      "split_sec": 1247.7,
+      "moving_sec": 1247.7,
+      "cum_sec": 91115.0
+    },
+    {
+      "mile": 101,
+      "split_sec": 1286.1,
+      "moving_sec": 1286.1,
+      "cum_sec": 92401.2
+    },
+    {
+      "mile": 102,
+      "split_sec": 1605.3,
+      "moving_sec": 1605.3,
+      "cum_sec": 94006.5
+    },
+    {
+      "mile": 103,
+      "split_sec": 2078.2,
+      "moving_sec": 2078.2,
+      "cum_sec": 96084.7
+    },
+    {
+      "mile": 104,
+      "split_sec": 1993.0,
+      "moving_sec": 1993.0,
+      "cum_sec": 98077.8
+    },
+    {
+      "mile": 105,
+      "split_sec": 1172.2,
+      "moving_sec": 1172.2,
+      "cum_sec": 99249.9
+    },
+    {
+      "mile": 106,
+      "split_sec": 1172.2,
+      "moving_sec": 1172.2,
+      "cum_sec": 100422.1
+    },
+    {
+      "mile": 107,
+      "split_sec": 978.4,
+      "moving_sec": 978.4,
+      "cum_sec": 101400.5
+    },
+    {
+      "mile": 108,
+      "split_sec": 925.4,
+      "moving_sec": 925.4,
+      "cum_sec": 102325.9
+    },
+    {
+      "mile": 109,
+      "split_sec": 1146.5,
+      "moving_sec": 1146.5,
+      "cum_sec": 103472.4
+    },
+    {
+      "mile": 110,
+      "split_sec": 1390.0,
+      "moving_sec": 1390.0,
+      "cum_sec": 104862.4
+    },
+    {
+      "mile": 111,
+      "split_sec": 1330.2,
+      "moving_sec": 1330.2,
+      "cum_sec": 106192.6
+    },
+    {
+      "mile": 112,
+      "split_sec": 1032.0,
+      "moving_sec": 1032.0,
+      "cum_sec": 107224.7
+    },
+    {
+      "mile": 113,
+      "split_sec": 1032.0,
+      "moving_sec": 1032.0,
+      "cum_sec": 108256.7
+    },
+    {
+      "mile": 114,
+      "split_sec": 1092.1,
+      "moving_sec": 1092.1,
+      "cum_sec": 109348.7
+    },
+    {
+      "mile": 115,
+      "split_sec": 1102.0,
+      "moving_sec": 1102.0,
+      "cum_sec": 110450.8
+    },
+    {
+      "mile": 116,
+      "split_sec": 1058.8,
+      "moving_sec": 1058.8,
+      "cum_sec": 111509.6
+    },
+    {
+      "mile": 117,
+      "split_sec": 1023.3,
+      "moving_sec": 1023.3,
+      "cum_sec": 112532.9
+    },
+    {
+      "mile": 118,
+      "split_sec": 989.1,
+      "moving_sec": 989.1,
+      "cum_sec": 113522.0
+    },
+    {
+      "mile": 119,
+      "split_sec": 881.0,
+      "moving_sec": 881.0,
+      "cum_sec": 114403.0
+    },
+    {
+      "mile": 120,
+      "split_sec": 881.0,
+      "moving_sec": 881.0,
+      "cum_sec": 115284.0
+    },
+    {
+      "mile": 121,
+      "split_sec": 1378.2,
+      "moving_sec": 1378.2,
+      "cum_sec": 116662.2
+    },
+    {
+      "mile": 122,
+      "split_sec": 1415.0,
+      "moving_sec": 1415.0,
+      "cum_sec": 118077.2
+    },
+    {
+      "mile": 123,
+      "split_sec": 1361.0,
+      "moving_sec": 1361.0,
+      "cum_sec": 119438.3
+    },
+    {
+      "mile": 124,
+      "split_sec": 1328.2,
+      "moving_sec": 1328.2,
+      "cum_sec": 120766.5
+    },
+    {
+      "mile": 125,
+      "split_sec": 1945.2,
+      "moving_sec": 1945.2,
+      "cum_sec": 122711.7
+    },
+    {
+      "mile": 126,
+      "split_sec": 3299.3,
+      "moving_sec": 3299.3,
+      "cum_sec": 126011.0
+    },
+    {
+      "mile": 127,
+      "split_sec": 3292.6,
+      "moving_sec": 3292.6,
+      "cum_sec": 129303.6
+    },
+    {
+      "mile": 128,
+      "split_sec": 1619.4,
+      "moving_sec": 1619.4,
+      "cum_sec": 130922.9
+    },
+    {
+      "mile": 129,
+      "split_sec": 1619.4,
+      "moving_sec": 1619.4,
+      "cum_sec": 132542.3
+    },
+    {
+      "mile": 130,
+      "split_sec": 2494.4,
+      "moving_sec": 2494.4,
+      "cum_sec": 135036.7
+    },
+    {
+      "mile": 131,
+      "split_sec": 2878.5,
+      "moving_sec": 2878.5,
+      "cum_sec": 137915.2
+    },
+    {
+      "mile": 132,
+      "split_sec": 2457.0,
+      "moving_sec": 2457.0,
+      "cum_sec": 140372.2
+    },
+    {
+      "mile": 133,
+      "split_sec": 1786.5,
+      "moving_sec": 1786.5,
+      "cum_sec": 142158.7
+    },
+    {
+      "mile": 134,
+      "split_sec": 1780.8,
+      "moving_sec": 1780.8,
+      "cum_sec": 143939.5
+    },
+    {
+      "mile": 135,
+      "split_sec": 1713.2,
+      "moving_sec": 1713.2,
+      "cum_sec": 145652.7
+    },
+    {
+      "mile": 136,
+      "split_sec": 1713.2,
+      "moving_sec": 1713.2,
+      "cum_sec": 147365.8
+    },
+    {
+      "mile": 137,
+      "split_sec": 2201.3,
+      "moving_sec": 2201.3,
+      "cum_sec": 149567.2
+    },
+    {
+      "mile": 138,
+      "split_sec": 2348.8,
+      "moving_sec": 2348.8,
+      "cum_sec": 151916.0
+    },
+    {
+      "mile": 139,
+      "split_sec": 2518.2,
+      "moving_sec": 2518.2,
+      "cum_sec": 154434.2
+    },
+    {
+      "mile": 140,
+      "split_sec": 2717.8,
+      "moving_sec": 2717.8,
+      "cum_sec": 157152.0
+    },
+    {
+      "mile": 141,
+      "split_sec": 2687.9,
+      "moving_sec": 2687.9,
+      "cum_sec": 159839.8
+    },
+    {
+      "mile": 142,
+      "split_sec": 2518.1,
+      "moving_sec": 2518.1,
+      "cum_sec": 162358.0
+    },
+    {
+      "mile": 143,
+      "split_sec": 2518.1,
+      "moving_sec": 2518.1,
+      "cum_sec": 164876.1
+    },
+    {
+      "mile": 144,
+      "split_sec": 1179.0,
+      "moving_sec": 1179.0,
+      "cum_sec": 166055.1
+    },
+    {
+      "mile": 145,
+      "split_sec": 925.8,
+      "moving_sec": 925.8,
+      "cum_sec": 166980.9
+    },
+    {
+      "mile": 146,
+      "split_sec": 669.7,
+      "moving_sec": 669.7,
+      "cum_sec": 167650.6
+    },
+    {
+      "mile": 147,
+      "split_sec": 444.3,
+      "moving_sec": 444.3,
+      "cum_sec": 168094.9
+    },
+    {
+      "mile": 148,
+      "split_sec": 446.3,
+      "moving_sec": 446.3,
+      "cum_sec": 168541.2
+    },
+    {
+      "mile": 149,
+      "split_sec": 452.9,
+      "moving_sec": 452.9,
+      "cum_sec": 168994.1
+    },
+    {
+      "mile": 150,
+      "split_sec": 452.9,
+      "moving_sec": 452.9,
+      "cum_sec": 169447.0
+    },
+    {
+      "mile": 151,
+      "split_sec": 537.5,
+      "moving_sec": 537.5,
+      "cum_sec": 169984.5
+    },
+    {
+      "mile": 152,
+      "split_sec": 545.4,
+      "moving_sec": 545.4,
+      "cum_sec": 170530.0
+    },
+    {
+      "mile": 153,
+      "split_sec": 461.2,
+      "moving_sec": 461.2,
+      "cum_sec": 170991.2
+    },
+    {
+      "mile": 154,
+      "split_sec": 406.2,
+      "moving_sec": 406.2,
+      "cum_sec": 171397.4
+    },
+    {
+      "mile": 155,
+      "split_sec": 409.1,
+      "moving_sec": 409.1,
+      "cum_sec": 171806.5
+    },
+    {
+      "mile": 156,
+      "split_sec": 415.9,
+      "moving_sec": 415.9,
+      "cum_sec": 172222.3
+    },
+    {
+      "mile": 157,
+      "split_sec": 415.9,
+      "moving_sec": 415.9,
+      "cum_sec": 172638.2
     }
   ]
 }

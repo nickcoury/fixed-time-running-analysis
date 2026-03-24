@@ -2,18 +2,57 @@
   "runner": "Alexa Monserat",
   "race": "Jackrabbit Jubilee",
   "year": 2025,
-  "distance_mi": 16.47,
+  "distance_mi": 7.46,
   "distance_id": "12h",
   "duration_sec": 43200,
   "duration": "12:00:00",
-  "data_type": "checkpoints",
+  "data_type": "miles",
   "source": "live.aravaiparunning.com event 434",
   "gender": "F",
-  "checkpoints": [
+  "loop_meters": 250.0,
+  "total_laps": 48,
+  "miles": [
     {
-      "name": "Finish",
-      "distance_mi": 16.47,
-      "time_sec": 43200
+      "mile": 1,
+      "split_sec": 2181.8,
+      "moving_sec": 2181.8,
+      "cum_sec": 2181.8
+    },
+    {
+      "mile": 2,
+      "split_sec": 2499.0,
+      "moving_sec": 2499.0,
+      "cum_sec": 4680.8
+    },
+    {
+      "mile": 3,
+      "split_sec": 4414.3,
+      "moving_sec": 4414.3,
+      "cum_sec": 9095.1
+    },
+    {
+      "mile": 4,
+      "split_sec": 3945.8,
+      "moving_sec": 3945.8,
+      "cum_sec": 13040.9
+    },
+    {
+      "mile": 5,
+      "split_sec": 2608.8,
+      "moving_sec": 2608.8,
+      "cum_sec": 15649.7
+    },
+    {
+      "mile": 6,
+      "split_sec": 2297.3,
+      "moving_sec": 2297.3,
+      "cum_sec": 17947.0
+    },
+    {
+      "mile": 7,
+      "split_sec": 3565.6,
+      "moving_sec": 3565.6,
+      "cum_sec": 21512.6
     }
   ]
 }

@@ -2,18 +2,81 @@
   "runner": "John Smithson",
   "race": "Jackrabbit Jubilee",
   "year": 2023,
-  "distance_mi": 10.87,
+  "distance_mi": 11.18,
   "distance_id": "12h",
   "duration_sec": 43200,
   "duration": "12:00:00",
-  "data_type": "checkpoints",
+  "data_type": "miles",
   "source": "live.aravaiparunning.com event 272",
   "gender": "M",
-  "checkpoints": [
+  "loop_meters": 500.0,
+  "total_laps": 36,
+  "miles": [
     {
-      "name": "Finish",
-      "distance_mi": 10.87,
-      "time_sec": 43200
+      "mile": 1,
+      "split_sec": 1083.6,
+      "moving_sec": 1083.6,
+      "cum_sec": 1083.6
+    },
+    {
+      "mile": 2,
+      "split_sec": 1065.6,
+      "moving_sec": 1065.6,
+      "cum_sec": 2149.2
+    },
+    {
+      "mile": 3,
+      "split_sec": 1014.1,
+      "moving_sec": 1014.1,
+      "cum_sec": 3163.3
+    },
+    {
+      "mile": 4,
+      "split_sec": 1194.1,
+      "moving_sec": 1194.1,
+      "cum_sec": 4357.4
+    },
+    {
+      "mile": 5,
+      "split_sec": 1075.2,
+      "moving_sec": 1075.2,
+      "cum_sec": 5432.5
+    },
+    {
+      "mile": 6,
+      "split_sec": 1139.0,
+      "moving_sec": 1139.0,
+      "cum_sec": 6571.5
+    },
+    {
+      "mile": 7,
+      "split_sec": 1184.2,
+      "moving_sec": 1184.2,
+      "cum_sec": 7755.7
+    },
+    {
+      "mile": 8,
+      "split_sec": 1360.8,
+      "moving_sec": 1360.8,
+      "cum_sec": 9116.5
+    },
+    {
+      "mile": 9,
+      "split_sec": 1152.8,
+      "moving_sec": 1152.8,
+      "cum_sec": 10269.2
+    },
+    {
+      "mile": 10,
+      "split_sec": 1225.1,
+      "moving_sec": 1225.1,
+      "cum_sec": 11494.4
+    },
+    {
+      "mile": 11,
+      "split_sec": 1847.7,
+      "moving_sec": 1847.7,
+      "cum_sec": 13342.0
     }
   ]
 }
